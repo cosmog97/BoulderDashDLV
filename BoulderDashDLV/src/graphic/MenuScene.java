@@ -22,8 +22,8 @@ public class MenuScene implements GameScene {
 
 	public void draw() {
 		Constants.context.drawImage(Constants.bgmenu , 0, 0);
-		Constants.context.drawImage(Constants.buttonplayer, 256, 429);
-		Constants.context.drawImage(Constants.buttondlv, 256, 546);
+		Constants.context.drawImage(Constants.buttonplayer, 256, 540);
+		Constants.context.drawImage(Constants.buttondlv, 256, 650);
 	}
 
 	public void handleEvent(Scene scene) {
@@ -31,8 +31,8 @@ public class MenuScene implements GameScene {
 
 			public void handle(MouseEvent arg0) {
 				if(arg0.isPrimaryButtonDown()) {
-					if(arg0.getX() >= 256 && arg0.getX() <= (456) 
-							&& arg0.getY() >= 429 && arg0.getY() <= (495)
+					if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
+							&& arg0.getY() >= 540 && arg0.getY() <= (540 + Constants.buttonplayer.getHeight())
 							&& manager.getGameScene() instanceof MenuScene) {
 						manager.switchToPlay();
 					}
