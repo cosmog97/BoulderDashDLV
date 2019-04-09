@@ -7,13 +7,8 @@ import utility.Type;
 public class Player extends Object {
 
 	
-	private Direction direction;
-	private Image player;
-	
 	public Player(int row, int column, World world) {
 		super(row, column, world, Type.PLAYER);
-		this.direction = Direction.IDLE;
-		
 	}
 	
 	@Override
@@ -26,29 +21,34 @@ public class Player extends Object {
 	public void draw() {
 		Constants.context.drawImage(Constants.player, 288 + this.column * 48, this.row * 48);
 	}
-	
-	public void walk(Direction dir) {
-		if (dir == Direction.UP) {
-			if (this.column - 1 >= 0) {
-				this.column -= 1;
+
+	public boolean canWalk(Direction dir) {
+		switch (dir) {
+		case UP:
+			if (row -1 >= 0) {
+				return true;
 			}
-		}
-		else if (dir == Direction.DOWN) {
-			if (this.column + 1 < world.getColumn()) {
-				this.column += 1;
+			break;
+		case DOWN:
+			if (row + 1 < Constants.altezza) {
+				return true;
 			}
-		}
-		else if (dir == Direction.LEFT) {
-			if (this.row - 1 >= 0 ) {
-				this.row -= 1;
+			
+			break;
+		case LEFT:
+			if (column -1 >= 0) {
+				return true;
 			}
-		}
-		else if (dir == Direction.RIGHT) {
-			if (this.row + 1 < world.getRow()) {
-				this.row += 1;
+			
+			break;
+		case RIGHT:
+			if (column +1 < Constants.lunghezza) {
+				return true;
 			}
+			break;
 		}
-		this.direction = dir;
+		return false;
 	}
+	
 
 }

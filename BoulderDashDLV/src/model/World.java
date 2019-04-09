@@ -11,12 +11,13 @@ import java.util.Scanner;
 import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 
 public class World {
 	
 	private Object [][] world;
 	private Player player;
-	
+	private int contGemme = 0;
 	
 	public World(){
 		this.world = new Object [this.getRow()][this.getColumn()];
@@ -73,7 +74,7 @@ public class World {
 				}
 				
 			}
-		this.player = new Player(0, 0, this); 
+		this.player = new Player(2, 0, this); 
 		
 	}
 	
@@ -90,8 +91,8 @@ public class World {
 	}
 	
 	public void draw () {
-		Constants.context.drawImage( Constants.mappa,0, 0 );
-
+		Constants.context.drawImage( Constants.mappa, 0, 0 );
+		Constants.context.strokeText("Gemme raccolte",10, 50);
 	    for (int i = 0; i < getRow(); i++) {
 	    	for (int j = 0; j < getColumn(); j++) {
 	    		world[i][j].draw();
@@ -99,7 +100,8 @@ public class World {
 
 	    }
 	    player.draw();
-
+	    
+	   
 	}
 
 	public void update() {
@@ -107,23 +109,55 @@ public class World {
 		
 	}
 
+	public void changeGround (int x, int y) {
+		world[x][y] = new Empty(x,y,this);
+	}
+	
+	public boolean moveWallorStone (int x, int y) {
+		if (world[x][y] instanceof Wall ||
+			world[x][y] instanceof Stone) {
+			return false;
+		}
+		else return true;
+	}
+	
 	public void movePlayer(Direction dir) {
 		switch (dir) {
-		case UP:
-			player.setRow(player.getRowIndex()-1);
-			break;
-		case DOWN:
-			player.setRow(player.getRowIndex()+1);
-			break;
-		case LEFT:
-			player.setColumn(player.getColumnIndex()-1);
-			break;
-		case RIGHT:
-			player.setColumn(player.getColumnIndex()+1);
-			break;
-		case IDLE:
-			break;
+			case UP:
+				if (player.canWalk(dir) && moveWallorStone(player.getRowIndex()-1,player.getColumnIndex())) {
+					if (world[player.getRowIndex()-1][player.getColumnIndex()] instanceof Ground) {
+						changeGround(player.getRowIndex()-1,player.getColumnIndex());
+					}
+					player.setRow(player.getRowIndex()-1);
+				}
+				break;
+			case DOWN:
+				if (player.canWalk(dir) &&  moveWallorStone(player.getRowIndex()+1,player.getColumnIndex())) {
+					if (world[player.getRowIndex()+1][player.getColumnIndex()] instanceof Ground) {
+						changeGround(player.getRowIndex()+1,player.getColumnIndex());
+					}
+					player.setRow(player.getRowIndex()+1);
+				}
+				
+				break;
+			case LEFT:
+				if (player.canWalk(dir) && moveWallorStone(player.getRowIndex(),player.getColumnIndex()-1)) {
+					if (world[player.getRowIndex()][player.getColumnIndex()-1] instanceof Ground) {
+						changeGround(player.getRowIndex(),player.getColumnIndex()-1);
+					}
+					player.setColumn(player.getColumnIndex()-1);
+				}
+				
+				break;
+			case RIGHT:
+				if (player.canWalk(dir) && moveWallorStone(player.getRowIndex(),player.getColumnIndex()+1)) {
+					if (world[player.getRowIndex()][player.getColumnIndex()+1] instanceof Ground) {
+						changeGround(player.getRowIndex(),player.getColumnIndex()+1);
+					}
+					player.setColumn(player.getColumnIndex()+1);
+				}
+				
+				break;
 		}
-		
 	}
 }

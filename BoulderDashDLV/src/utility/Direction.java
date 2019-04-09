@@ -1,5 +1,5 @@
 package utility;
 
 public enum Direction {
-	IDLE, UP, DOWN, LEFT, RIGHT;
+	UP, DOWN, LEFT, RIGHT;
 }
