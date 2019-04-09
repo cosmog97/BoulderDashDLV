@@ -15,6 +15,7 @@ public class Constants {
 	public static Image mappa = new Image ("res/mappa.png");
 	public static Image bgmenu = new Image ("res/bgmenu.png");
 	public static Image buttonplayer = new Image ("res/buttonplayer.png");
+	public static Image buttondlv = new Image ("res/buttondlv.png");
 	public static Image wall = new Image ("res/wall.png");
 	public static Image ground = new Image ("res/ground.png");
 	public static Image player = new Image ("res/player.png");
