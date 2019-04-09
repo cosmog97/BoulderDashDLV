@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import model.World;
+import utility.Direction;
 
 public class PlayScene implements GameScene {
 	
@@ -21,7 +22,7 @@ public class PlayScene implements GameScene {
 	}
 
 	public void update() {
-	//	world.update();
+		world.update();
 	/*	player.update();
 		obManager.update();
 		if((player.jumpInWater() && obManager.voidBelow(player.row, player.column)) || obManager.collide(player.row, player.column)) {
@@ -43,24 +44,24 @@ public class PlayScene implements GameScene {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			
 			public void handle(KeyEvent arg0) {
-			/*	if(player.getJumping() == false) {
+		
 					switch(arg0.getCode()) {
 					case UP:
-						player.jump(Direction.UP);
+						world.movePlayer(Direction.UP);
 						break;
 					case DOWN:
-						player.jump(Direction.DOWN);
+						world.movePlayer(Direction.DOWN);
 						break;
 					case LEFT:
-						player.jump(Direction.LEFT);
+						world.movePlayer(Direction.LEFT);
 						break;
 					case RIGHT:
-						player.jump(Direction.RIGHT);
+						world.movePlayer(Direction.RIGHT);
 						break;
 					default:
 						break;
 					}
-				}*/
+				
 			}
 			
 		});

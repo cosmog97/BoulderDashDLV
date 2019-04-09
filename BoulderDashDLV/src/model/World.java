@@ -68,14 +68,12 @@ public class World {
 						case '6':
 							this.world[cont][i] = null; //new Door(cont, i, this);
 							break;
-						case '7':
-							this.world[cont][i] = new Player(cont, i, this); //new Door(cont, i, this);
-							break;
+
 					}
 				}
 				
 			}
-		
+		this.player = new Player(0, 0, this); 
 		
 	}
 	
@@ -100,6 +98,32 @@ public class World {
 	    	}
 
 	    }
+	    player.draw();
 
+	}
+
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void movePlayer(Direction dir) {
+		switch (dir) {
+		case UP:
+			player.setRow(player.getRowIndex()-1);
+			break;
+		case DOWN:
+			player.setRow(player.getRowIndex()+1);
+			break;
+		case LEFT:
+			player.setColumn(player.getColumnIndex()-1);
+			break;
+		case RIGHT:
+			player.setColumn(player.getColumnIndex()+1);
+			break;
+		case IDLE:
+			break;
+		}
+		
 	}
 }
