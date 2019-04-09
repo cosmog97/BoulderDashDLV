@@ -1,5 +1,8 @@
 package utility;
 
+import java.io.File;
+import java.io.FileReader;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -15,4 +18,5 @@ public class Constants {
 	public static Image wall = new Image ("res/wall.png");
 	public static Image ground = new Image ("res/ground.png");
 	public static Image player = new Image ("res/player.png");
+
 }

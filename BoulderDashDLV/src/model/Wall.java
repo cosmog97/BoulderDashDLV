@@ -1,5 +1,6 @@
 package model;
 
+import utility.Constants;
 import utility.Type;
 
 public class Wall extends Object {
@@ -18,7 +19,7 @@ public class Wall extends Object {
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+		Constants.context.drawImage(Constants.wall, 288 + this.column * 48, this.row * 48);
 	}
 
 }

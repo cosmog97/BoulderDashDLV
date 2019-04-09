@@ -1,16 +1,21 @@
 package model;
 import utility.*;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
+
+import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 import javafx.scene.image.Image;
 
 public class World {
 	
 	private Object [][] world;
-
+	private Player player;
 	
 	
 	public World(){
@@ -19,38 +24,33 @@ public class World {
 	
 	public World(int level) {
 		this.world = new Object [this.getRow()][this.getColumn()];
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader("C:\\Users\\cosmo\\git\\BoulderDashDLV\\BoulderDashDLV\\src\\res\\cazzo.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
-		
-		/*	Scanner s = null; 
-			
-			switch (level) {
-				case 1:
-					s = new Scanner(new File("levels/level01"));
-					break;
-				case 2:
-					s = new Scanner(new File("levels/level02"));
-					break;
-				default:
-					break;
-			}
-			int cont = 0;*/
 
 
-			for (int cont = 0; cont < getRow(); cont++) {
-			
+		for (int cont = 0; cont < getRow(); cont++) {
+				char[] line = null;
+				try {
+					line = reader.readLine().toCharArray();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				for (int i = 0; i < getColumn(); i++) {
-						int val = 0;
-						if (i == 15 && cont == 15) {
-							val = 7;
-						} else if (cont < 3 && i < 3) {
-							val = 1;
-						}
+
 					
-						switch (val) {
-						case 0:
+						switch (line[i]) {
+						case '0':
 							this.world[cont][i] = new Empty(cont, i, this);
 							break;
-						case 1:
+						case '1':
 							this.world[cont][i] = new Ground(cont, i, this);
 							break;
 						case '2':
@@ -68,7 +68,7 @@ public class World {
 						case '6':
 							this.world[cont][i] = null; //new Door(cont, i, this);
 							break;
-						case 7:
+						case '7':
 							this.world[cont][i] = new Player(cont, i, this); //new Door(cont, i, this);
 							break;
 					}

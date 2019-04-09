@@ -1,6 +1,10 @@
 package main;
 
 import utility.Constants;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 import graphic.GameManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application; 
@@ -19,7 +23,7 @@ public class Main extends Application {
    @Override     
    public void start(Stage primaryStage) throws Exception {            
 	   Group root = new Group();
-		
+	   
 	   final Scene scene = new Scene(root, 1728, 864);
 	   Canvas canvas = new Canvas(scene.getWidth(),scene.getHeight());
 	   Constants.context = canvas.getGraphicsContext2D();
