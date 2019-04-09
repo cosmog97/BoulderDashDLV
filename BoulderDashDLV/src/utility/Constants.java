@@ -18,5 +18,5 @@ public class Constants {
 	public static Image wall = new Image ("res/wall.png");
 	public static Image ground = new Image ("res/ground.png");
 	public static Image player = new Image ("res/player.png");
-
+	public static Image stone = new Image ("res/stone.png");
 }

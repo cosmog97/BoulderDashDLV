@@ -30,6 +30,7 @@ public class Main extends Application {
 	   root.getChildren().add(canvas);
 	   primaryStage.setTitle("BoulderDashDLV");
 	   primaryStage.show();
+	   primaryStage.centerOnScreen();
 	   primaryStage.setScene(scene);
 	   final GameManager game = new GameManager();
 		
