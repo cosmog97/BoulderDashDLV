@@ -75,7 +75,7 @@ public class World {
 				
 			}
 		this.player = new Player(2, 0, this); 
-		
+		this.world[2][0] = new Empty(2,0,this);
 	}
 	
 	public int getRow() {

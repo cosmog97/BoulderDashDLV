@@ -22,8 +22,8 @@ public class MenuScene implements GameScene {
 
 	public void draw() {
 		Constants.context.drawImage(Constants.bgmenu , 0, 0);
-		Constants.context.drawImage(Constants.buttonplay, 156, 429);
-		Constants.context.drawImage(null, 156, 546);
+		Constants.context.drawImage(Constants.buttonplayer, 156, 429);
+		Constants.context.drawImage(Constants.buttonplayer, 156, 546);
 	}
 
 	public void handleEvent(Scene scene) {
