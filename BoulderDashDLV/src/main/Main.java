@@ -29,9 +29,10 @@ public class Main extends Application {
 	   Constants.context = canvas.getGraphicsContext2D();
 	   root.getChildren().add(canvas);
 	   primaryStage.setTitle("BoulderDashDLV");
-	   primaryStage.show();
-	   primaryStage.centerOnScreen();
 	   primaryStage.setScene(scene);
+	   primaryStage.centerOnScreen();
+	   primaryStage.show();
+	 
 	   final GameManager game = new GameManager();
 		
 		new AnimationTimer() {
