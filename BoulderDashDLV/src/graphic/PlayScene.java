@@ -23,6 +23,9 @@ public class PlayScene implements GameScene {
 
 	public void update() {
 		world.update();
+		if (world.getWin()) {
+			manager.switchToVittoria();
+		}
 	/*	player.update();
 		obManager.update();
 		if((player.jumpInWater() && obManager.voidBelow(player.row, player.column)) || obManager.collide(player.row, player.column)) {

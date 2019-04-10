@@ -19,6 +19,8 @@ public class World {
 	private Object [][] world;
 	private Player player;
 	private int contGemme = 0;
+	private int maxGemme;
+	private boolean win = false;
 	
 	public World(){
 		this.world = new Object [this.getRow()][this.getColumn()];
@@ -86,8 +88,17 @@ public class World {
 				}
 				
 			}
-		this.player = new Player(2, 0, this); 
-		this.world[2][0] = new Empty(2,0,this);
+		try {
+			this.maxGemme = Integer.parseInt(reader.readLine());
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.player = new Player(1, 0, this); 
+		this.world[1][0] = new Empty(1,0,this);
 	}
 	
 	public int getRow() {
@@ -104,7 +115,7 @@ public class World {
 	
 	public void draw () {
 		Constants.context.drawImage( Constants.mappa, 0, 0 );
-		Constants.context.strokeText("Gemme raccolte",10, 50);
+		Constants.context.strokeText("Gemme raccolte " + contGemme,10, 50);
 	    for (int i = 0; i < getRow(); i++) {
 	    	for (int j = 0; j < getColumn(); j++) {
 	    		world[i][j].draw();
@@ -115,9 +126,15 @@ public class World {
 	    
 	   
 	}
-
+	
+	public boolean getWin() {
+		return win;
+	}
+	
 	public void update() {
-		// TODO Auto-generated method stub
+		if (contGemme == maxGemme) {
+			win = true;
+		}
 		
 	}
 
@@ -140,6 +157,10 @@ public class World {
 					if (world[player.getRowIndex()-1][player.getColumnIndex()] instanceof Ground) {
 						changeGround(player.getRowIndex()-1,player.getColumnIndex());
 					}
+					else if (world[player.getRowIndex()-1][player.getColumnIndex()] instanceof Diamond) {
+						changeGround(player.getRowIndex()-1,player.getColumnIndex());
+						contGemme++;
+					}
 					player.setRow(player.getRowIndex()-1);
 				}
 				break;
@@ -147,6 +168,10 @@ public class World {
 				if (player.canWalk(dir) &&  moveWallorStone(player.getRowIndex()+1,player.getColumnIndex())) {
 					if (world[player.getRowIndex()+1][player.getColumnIndex()] instanceof Ground) {
 						changeGround(player.getRowIndex()+1,player.getColumnIndex());
+					}
+					else if (world[player.getRowIndex()+1][player.getColumnIndex()] instanceof Diamond) {
+						changeGround(player.getRowIndex()+1,player.getColumnIndex());
+						contGemme++;
 					}
 					player.setRow(player.getRowIndex()+1);
 				}
@@ -157,6 +182,10 @@ public class World {
 					if (world[player.getRowIndex()][player.getColumnIndex()-1] instanceof Ground) {
 						changeGround(player.getRowIndex(),player.getColumnIndex()-1);
 					}
+					else if (world[player.getRowIndex()][player.getColumnIndex()-1] instanceof Diamond) {
+						changeGround(player.getRowIndex(),player.getColumnIndex()-1);
+						contGemme++;
+					}
 					player.setColumn(player.getColumnIndex()-1);
 				}
 				
@@ -165,6 +194,10 @@ public class World {
 				if (player.canWalk(dir) && moveWallorStone(player.getRowIndex(),player.getColumnIndex()+1)) {
 					if (world[player.getRowIndex()][player.getColumnIndex()+1] instanceof Ground) {
 						changeGround(player.getRowIndex(),player.getColumnIndex()+1);
+					}
+					else if (world[player.getRowIndex()][player.getColumnIndex()+1] instanceof Diamond) {
+						changeGround(player.getRowIndex(),player.getColumnIndex()+1);
+						contGemme++;
 					}
 					player.setColumn(player.getColumnIndex()+1);
 				}

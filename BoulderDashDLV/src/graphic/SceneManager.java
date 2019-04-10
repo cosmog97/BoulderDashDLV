@@ -31,6 +31,14 @@ public class SceneManager {
 		//this.scene = new DLVScene(this);
 	}
 	
+	public void switchToLevels() {
+		
+	}
+	
+	public void switchToVittoria() {
+		this.scene = new VittoriaScene(this);
+	}
+	
 	public void switchToMenu() {
 		this.scene = new MenuScene(this);
 	}
