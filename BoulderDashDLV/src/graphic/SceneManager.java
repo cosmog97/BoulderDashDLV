@@ -24,7 +24,7 @@ public class SceneManager {
 	}
 
 	public void switchToPlay() {
-		this.scene = new PlayScene(this);
+		this.scene = new PlayScene(this, 3);
 	}
 	
 	
@@ -36,8 +36,8 @@ public class SceneManager {
 		
 	}
 	
-	public void switchToVittoria() {
-		this.scene = new VittoriaScene(this);
+	public void switchToVittoria(int level) {
+		this.scene = new VittoriaScene(this,level);
 	}
 	public void switchToDie() {
 		this.scene = new DieScene(this);

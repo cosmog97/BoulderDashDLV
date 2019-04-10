@@ -25,16 +25,16 @@ public class DieScene implements GameScene {
 	public void draw() {
 		Constants.context.drawImage(Constants.die , 0, 0);
 		if (menuOn) {
-			Constants.context.drawImage(Constants.buttonmenu_on, 0, 0);
+			Constants.context.drawImage(Constants.buttonmenu_on, 558, 600);
 		}
 		else {
-			Constants.context.drawImage(Constants.buttonmenu, 0, 0);
+			Constants.context.drawImage(Constants.buttonmenu, 558, 600);
 		}
 		if (randomOn) {
-			Constants.context.drawImage(Constants.buttonriprova_on, 500, 0);
+			Constants.context.drawImage(Constants.buttonriprova_on, 1158, 600);
 		}
 		else {
-			Constants.context.drawImage(Constants.buttonriprova, 500, 0);
+			Constants.context.drawImage(Constants.buttonriprova, 1158, 600);
 		}
 	}
 
@@ -42,8 +42,8 @@ public class DieScene implements GameScene {
 		scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
 			@Override 
 			public void handle(MouseEvent arg0) {
-				if(arg0.getX() >= 0 && arg0.getX() <= (0 + Constants.buttonmenu.getWidth()) 
-						&& arg0.getY() >= 0 && arg0.getY() <= (0 + Constants.buttonmenu.getHeight())
+				if(arg0.getX() >= 558 && arg0.getX() <= (558 + Constants.buttonmenu.getWidth()) 
+						&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.buttonmenu.getHeight())
 						&& manager.getGameScene() instanceof DieScene) {
 					//manager.switchToPlay();
 					menuOn = true;
@@ -52,8 +52,8 @@ public class DieScene implements GameScene {
 					menuOn = false;
 				}
 				
-				if(arg0.getX() >= 500 && arg0.getX() <= (500 + Constants.buttonmenu.getWidth()) 
-						&& arg0.getY() >= 0 && arg0.getY() <= (0 + Constants.buttonmenu.getHeight())
+				if(arg0.getX() >= 1158 && arg0.getX() <= (1158 + Constants.buttonmenu.getWidth()) 
+						&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.buttonmenu.getHeight())
 						&& manager.getGameScene() instanceof DieScene) {
 					//manager.switchToPlay();
 					randomOn = true;

@@ -11,12 +11,14 @@ public class PlayScene implements GameScene {
 	
 	protected SceneManager manager;
 	private World world;
+	private int level;
 	/*private PlayerObject player;
 	private ObstacleManager obManager;*/
 	
-	public PlayScene(SceneManager sceneManager) {
+	public PlayScene(SceneManager sceneManager, int level) {
 		this.manager = sceneManager;
-		this.world = new World(2);
+		this.level = level;
+		this.world = new World(this.level);
 	/*	this.player = new PlayerObject(12, 7, this.world);
 		this.obManager = new ObstacleManager(this.world);		*/
 	}
@@ -24,7 +26,7 @@ public class PlayScene implements GameScene {
 	public void update() {
 		world.update();
 		if (world.getWin()) {
-			manager.switchToVittoria();
+			manager.switchToVittoria(level);
 		}
 		if (world.getDie()) {
 			manager.switchToDie();
