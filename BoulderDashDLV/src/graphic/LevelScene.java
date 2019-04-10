@@ -13,6 +13,7 @@ public class LevelScene implements GameScene {
 	protected boolean due;
 	protected boolean tre;
 	protected boolean random;
+	protected boolean indietro;
 	
 	public LevelScene(SceneManager manager) {
 		this.manager = manager;
@@ -20,6 +21,7 @@ public class LevelScene implements GameScene {
 		this.due = false;
 		this.tre = false;
 		this.random = false;
+		this.indietro = false;
 	}
 	
 	public void update() {
@@ -29,6 +31,13 @@ public class LevelScene implements GameScene {
 
 	public void draw() {
 		Constants.context.drawImage(Constants.bglevels , 0, 0);
+		if (indietro) {
+			Constants.context.drawImage(Constants.indietro_on, 714, 750);
+		}
+		else {
+			Constants.context.drawImage(Constants.indietro, 714, 750);
+		}
+		
 		if (uno) {
 			Constants.context.drawImage(null, 256, 540);
 		}
@@ -80,12 +89,28 @@ public class LevelScene implements GameScene {
 						dlvOn = false;
 					}
 				*/
+				if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
+						&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
+						&& manager.getGameScene() instanceof LevelScene) {
+					indietro = true;
+				} 
+				else {
+					indietro = false;
+				}
 			}
 		});
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override 
 			public void handle(MouseEvent arg0) {
-				manager.switchToPlay(2);
+				if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
+						&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
+						&& manager.getGameScene() instanceof LevelScene) {
+					manager.switchToMenu();
+				}
+				else {
+					manager.switchToPlay(2);
+				}
+				
 			/*	if(arg0.isPrimaryButtonDown()) {
 					if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
 							&& arg0.getY() >= 540 && arg0.getY() <= (540 + Constants.buttonplayer.getHeight())
