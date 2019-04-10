@@ -26,6 +26,9 @@ public class PlayScene implements GameScene {
 		if (world.getWin()) {
 			manager.switchToVittoria();
 		}
+		if (world.getDie()) {
+			manager.switchToDie();
+		}
 	/*	player.update();
 		obManager.update();
 		if((player.jumpInWater() && obManager.voidBelow(player.row, player.column)) || obManager.collide(player.row, player.column)) {
@@ -39,6 +42,7 @@ public class PlayScene implements GameScene {
 
 	public void draw() {
 		world.draw();
+		
 	}
 
 	public void handleEvent(Scene scene) {

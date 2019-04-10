@@ -39,7 +39,9 @@ public class SceneManager {
 	public void switchToVittoria() {
 		this.scene = new VittoriaScene(this);
 	}
-	
+	public void switchToDie() {
+		this.scene = new DieScene(this);
+	}
 	public void switchToMenu() {
 		this.scene = new MenuScene(this);
 	}

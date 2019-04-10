@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 import com.sun.corba.se.impl.orbutil.closure.Constant;
@@ -22,6 +23,7 @@ public class World {
 	private int contGemme = 0;
 	private int maxGemme;
 	private boolean win = false;
+	private boolean die = false;
 
 	public World() {
 		this.world = new Object[this.getRow()][this.getColumn()];
@@ -114,6 +116,7 @@ public class World {
 	}
 
 	public void draw() {
+
 		Constants.context.drawImage(Constants.mappa, 0, 0);
 		Constants.context.strokeText("Gemme raccolte " + contGemme, 10, 50);
 		for (int i = 0; i < getRow(); i++) {
@@ -124,10 +127,14 @@ public class World {
 		}
 		player.draw();
 
+		
 	}
 
 	public boolean getWin() {
 		return win;
+	}
+	public boolean getDie() {
+		return die;
 	}
 
 	public void update() {
@@ -142,6 +149,10 @@ public class World {
 						world[i + 1][j] = world[i][j];
 						world[i + 1][j].setRow(i + 1);
 						world[i][j] = new Empty(i, j);
+						if(player.getRowIndex() == i + 2 && player.getColumnIndex() == j) {
+							die = true;
+						}
+						
 					}
 
 					else if (world[i + 1][j] instanceof Stone && world[i][j - 1] instanceof Empty
