@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 import com.sun.corba.se.impl.orbutil.closure.Constant;
@@ -27,7 +28,18 @@ public class World {
 		this.world = new Object [this.getRow()][this.getColumn()];
 		BufferedReader reader = null;
 		try {
-			reader = new BufferedReader(new FileReader("C:\\Users\\cosmo\\git\\BoulderDashDLV\\BoulderDashDLV\\src\\res\\cazzo.txt"));
+			switch (level) {
+				case 1:
+					reader = new BufferedReader(new FileReader(Paths.get("").toAbsolutePath() + "\\src\\res\\level\\level01.txt"));
+					break;
+				case 2:
+					reader = new BufferedReader(new FileReader(Paths.get("").toAbsolutePath() + "\\src\\res\\level\\level02.txt"));
+					break;
+				case 3:
+					reader = new BufferedReader(new FileReader(Paths.get("").toAbsolutePath() + "\\src\\res\\level\\level03.txt"));
+					break;
+			}
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
