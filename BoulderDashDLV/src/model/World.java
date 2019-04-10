@@ -78,6 +78,7 @@ public class World {
 					break;
 				case '4':
 					this.world[cont][i] = new Diamond(cont, i);
+					maxGemme++;
 					break;
 				case '5':
 					this.world[cont][i] = null; // new Enemy(cont, i, this);
@@ -89,15 +90,6 @@ public class World {
 				}
 			}
 
-		}
-		try {
-			this.maxGemme = Integer.parseInt(reader.readLine());
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		this.player = new Player(1, 0);
 		this.world[1][0] = new Empty(1, 0);

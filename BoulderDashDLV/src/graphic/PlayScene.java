@@ -16,7 +16,7 @@ public class PlayScene implements GameScene {
 	
 	public PlayScene(SceneManager sceneManager) {
 		this.manager = sceneManager;
-		this.world = new World(1);
+		this.world = new World(2);
 	/*	this.player = new PlayerObject(12, 7, this.world);
 		this.obManager = new ObstacleManager(this.world);		*/
 	}
