@@ -38,7 +38,7 @@ public class VittoriaScene implements GameScene {
 			@Override 
 			public void handle(MouseEvent arg0) {
 				
-			
+				manager.switchToMenu();
 			}
 		});
 	}
