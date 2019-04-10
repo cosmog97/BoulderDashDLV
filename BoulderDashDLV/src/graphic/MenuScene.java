@@ -12,11 +12,13 @@ public class MenuScene implements GameScene {
 	protected SceneManager manager;
 	protected boolean playerOn;
 	protected boolean dlvOn;
+	protected boolean esciOn;
 	
 	public MenuScene(SceneManager manager) {
 		this.manager = manager;
 		this.dlvOn = false;
 		this.playerOn = false;
+		this.esciOn = false;
 	}
 	
 	public void update() {
@@ -37,6 +39,12 @@ public class MenuScene implements GameScene {
 		}
 		else {
 			Constants.context.drawImage(Constants.buttondlv, 256, 650);
+		}
+		if (esciOn) {
+			Constants.context.drawImage(Constants.esci_on, 1172, 650);
+		}
+		else {
+			Constants.context.drawImage(Constants.esci, 1172, 650);
 		}
 	}
 

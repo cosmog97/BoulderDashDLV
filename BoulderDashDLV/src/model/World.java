@@ -111,6 +111,7 @@ public class World {
 
 		Constants.context.drawImage(Constants.mappa, 0, 0);
 		Constants.context.strokeText("Gemme raccolte " + contGemme, 10, 50);
+		Constants.context.strokeText("Gemme da raccogliere " + (maxGemme - contGemme), 10, 80);
 		for (int i = 0; i < getRow(); i++) {
 			for (int j = 0; j < getColumn(); j++) {
 				world[i][j].draw();
