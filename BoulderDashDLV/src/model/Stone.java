@@ -4,8 +4,8 @@ import utility.Type;
 
 public class Stone extends Object{
 
-	public Stone(int cont, int i, World world) {
-		super(cont,i,world,Type.SASSI);
+	public Stone(int cont, int i) {
+		super(cont,i,Type.SASSI);
 	}
 
 	@Override

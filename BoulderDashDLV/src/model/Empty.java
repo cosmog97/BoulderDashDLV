@@ -5,8 +5,8 @@ import utility.Type;
 
 public class Empty extends Object {
 
-	public Empty(int row, int column, World world) {
-		super(row, column, world, Type.VUOTO);
+	public Empty(int row, int column) {
+		super(row, column, Type.VUOTO);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -7,8 +7,8 @@ import utility.Type;
 public class Player extends Object {
 
 	
-	public Player(int row, int column, World world) {
-		super(row, column, world, Type.PLAYER);
+	public Player(int row, int column) {
+		super(row, column, Type.PLAYER);
 	}
 	
 	@Override

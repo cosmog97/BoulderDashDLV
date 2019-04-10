@@ -5,8 +5,8 @@ import utility.Type;
 
 public class Diamond extends Object {
 
-	public Diamond(int row, int column, World world) {
-		super(row, column, world,Type.DIAMANTI);
+	public Diamond(int row, int column) {
+		super(row, column,Type.DIAMANTI);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -63,19 +63,19 @@ public class World {
 					
 						switch (line[i]) {
 						case '0':
-							this.world[cont][i] = new Empty(cont, i, this);
+							this.world[cont][i] = new Empty(cont, i);
 							break;
 						case '1':
-							this.world[cont][i] = new Ground(cont, i, this);
+							this.world[cont][i] = new Ground(cont, i);
 							break;
 						case '2':
-							this.world[cont][i] = new Stone(cont, i, this);
+							this.world[cont][i] = new Stone(cont, i);
 							break;
 						case '3':
-							this.world[cont][i] = new Wall(cont, i, this);
+							this.world[cont][i] = new Wall(cont, i);
 							break;
 						case '4':
-							this.world[cont][i] = new Diamond(cont, i, this);
+							this.world[cont][i] = new Diamond(cont, i);
 							break;
 						case '5':
 							this.world[cont][i] = null; //new Enemy(cont, i, this);
@@ -97,8 +97,8 @@ public class World {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.player = new Player(1, 0, this); 
-		this.world[1][0] = new Empty(1,0,this);
+		this.player = new Player(1, 0); 
+		this.world[1][0] = new Empty(1,0);
 	}
 	
 	public int getRow() {
@@ -135,11 +135,39 @@ public class World {
 		if (contGemme == maxGemme) {
 			win = true;
 		}
-		
+		for (int i = 0; i < getRow(); i++) {
+			for (int j = 0; j < getColumn(); j++) {
+				if (world[i][j] instanceof Stone) {
+					if (world[i+1][j] instanceof Empty &&
+						!(player.getRowIndex() == i+1 &&
+						player.getColumnIndex() == j )) {
+						world[i+1][j] = world[i][j];
+						world[i+1][j].setRow(i+1);
+						world[i][j] = new Empty(i,j);
+					}
+					
+					else if (world[i+1][j] instanceof Stone &&
+						world[i][j-1] instanceof Empty &&
+						world[i+1][j-1] instanceof Empty) {
+						world[i][j-1] = world[i][j];
+						world[i][j-1].setColumn(j-1);
+						world[i][j] = new Empty(i,j);
+					}
+					
+					else if (world[i+1][j] instanceof Stone &&
+						world[i][j+1] instanceof Empty &&
+						world[i+1][j+1] instanceof Empty) {
+						world[i][j+1] = world[i][j];
+						world[i][j+1].setColumn(j+1);
+						world[i][j] = new Empty(i,j);
+					}
+				}
+			}
+		}
 	}
 
 	public void changeGround (int x, int y) {
-		world[x][y] = new Empty(x,y,this);
+		world[x][y] = new Empty(x,y);
 	}
 	
 	public boolean moveWallorStone (int x, int y) {
@@ -204,5 +232,6 @@ public class World {
 				
 				break;
 		}
+		
 	}
 }

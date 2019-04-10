@@ -5,8 +5,8 @@ import utility.Type;
 
 public class Wall extends Object {
 
-	public Wall(int row, int column, World world) {
-		super(row, column, world,Type.MURO);
+	public Wall(int row, int column) {
+		super(row, column,Type.MURO);
 		// TODO Auto-generated constructor stub
 	}
 

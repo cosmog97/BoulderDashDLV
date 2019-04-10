@@ -5,8 +5,8 @@ import utility.Type;
 
 public class Ground extends Object {
 
-	public Ground(int row, int column, World world) {
-		super(row, column, world, Type.TERRA);
+	public Ground(int row, int column) {
+		super(row, column, Type.TERRA);
 		// TODO Auto-generated constructor stub
 	}
 

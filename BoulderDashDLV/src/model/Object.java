@@ -6,13 +6,11 @@ public abstract class Object {
 	
 	protected int row; //posizione colonna
 	protected int column; //posizione riga
-	protected World world;
 	protected Type t;
 	
-	public Object(int row, int column, World world, Type t) {
+	public Object(int row, int column, Type t) {
 		this.row = row;
 		this.column = column;
-		this.world = world;
 		this.t = t;
 	}
 	
@@ -32,9 +30,6 @@ public abstract class Object {
 		return this.column;
 	}
 	
-	public World getWorld() {
-		return this.world;
-	}
 	
 	public abstract void update();
 	
