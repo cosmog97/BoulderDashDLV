@@ -33,7 +33,7 @@ public class SceneManager {
 	}
 	
 	public void switchToLevels() {
-		
+		this.scene = new LevelScene(this);
 	}
 	
 	public void switchToVittoria(int level) {
