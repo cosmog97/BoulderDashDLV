@@ -2,8 +2,7 @@ package main;
 
 import utility.Constants;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 
 import graphic.GameManager;
 import javafx.animation.AnimationTimer;
@@ -11,13 +10,7 @@ import javafx.application.Application;
 import javafx.scene.Group; 
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color; 
 import javafx.stage.Stage;
-import model.World;  
 
 public class Main extends Application { 
    @Override     
@@ -29,6 +22,7 @@ public class Main extends Application {
 	   Constants.context = canvas.getGraphicsContext2D();
 	   root.getChildren().add(canvas);
 	   primaryStage.setTitle("BoulderDashDLV");
+	   primaryStage.getIcons().add(Constants.icon);
 	   primaryStage.setResizable(false);
 	   primaryStage.show();
 	   primaryStage.setScene(scene);

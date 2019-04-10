@@ -9,6 +9,7 @@ public class Constants {
 	public static int lunghezza = 30;
 	public static int altezza = 18;
 	public static GraphicsContext context;
+	public static Image icon = new Image ("res/icon.png");
 	public static Image mappa = new Image ("res/mappa2.png");
 	public static Image win = new Image("res/win.png");
 	public static Image die = new Image("res/die.png");

@@ -85,7 +85,7 @@ public class LevelScene implements GameScene {
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override 
 			public void handle(MouseEvent arg0) {
-				manager.switchToPlay(1);
+				manager.switchToPlay(2);
 			/*	if(arg0.isPrimaryButtonDown()) {
 					if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
 							&& arg0.getY() >= 540 && arg0.getY() <= (540 + Constants.buttonplayer.getHeight())
