@@ -89,10 +89,33 @@ public class VittoriaScene implements GameScene {
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override 
 			public void handle(MouseEvent arg0) {
-				
-				
+				if (arg0.isPrimaryButtonDown()) {
+					if(arg0.getX() >= 558 && arg0.getX() <= (558 + Constants.buttonmenu.getWidth()) 
+							&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.buttonmenu.getHeight())
+							&& manager.getGameScene() instanceof VittoriaScene) {
+						manager.switchToMenu();
+					} 
+					
+					
+					if(arg0.getX() >= 1158 && arg0.getX() <= (1158 + Constants.livrandom.getWidth()) 
+							&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.livrandom.getHeight())
+							&& manager.getGameScene() instanceof VittoriaScene) {
+						//manager.switchToPlayRandom();
+					} 
+					
+					
+					if (level != 3) {
+						if(arg0.getX() >= 858 && arg0.getX() <= (858 + Constants.livrandom.getWidth()) 
+								&& arg0.getY() >= 700 && arg0.getY() <= (700 + Constants.livrandom.getHeight())
+								&& manager.getGameScene() instanceof VittoriaScene) {
+							manager.switchToPlay(level+1);
+						} 
+						
+					}
+				}
 			}
 		});
+
 	}
 
 }

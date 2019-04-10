@@ -74,7 +74,7 @@ public class MenuScene implements GameScene {
 					if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
 							&& arg0.getY() >= 540 && arg0.getY() <= (540 + Constants.buttonplayer.getHeight())
 							&& manager.getGameScene() instanceof MenuScene) {
-						manager.switchToPlay();
+						manager.switchToPlay(2);
 						
 					}
 					else if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 

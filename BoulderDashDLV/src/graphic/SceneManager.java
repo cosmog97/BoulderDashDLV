@@ -23,8 +23,8 @@ public class SceneManager {
 		scene.handleEvent(_scene);
 	}
 
-	public void switchToPlay() {
-		this.scene = new PlayScene(this, 3);
+	public void switchToPlay(int level) {
+		this.scene = new PlayScene(this, level);
 	}
 	
 	
