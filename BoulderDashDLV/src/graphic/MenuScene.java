@@ -2,6 +2,7 @@
 package graphic;
 
 import interfaces.GameScene;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -72,6 +73,15 @@ public class MenuScene implements GameScene {
 					else {
 						dlvOn = false;
 					}
+					if(arg0.getX() >= 1172 && arg0.getX() <= (1172 + Constants.buttonplayer.getWidth()) 
+							&& arg0.getY() >= 650 && arg0.getY() <= (650 + Constants.buttonplayer.getHeight())
+							&& manager.getGameScene() instanceof MenuScene) {
+						esciOn = true;
+						
+					}
+					else {
+						esciOn = false;
+					}
 				
 			}
 		});
@@ -89,6 +99,12 @@ public class MenuScene implements GameScene {
 							&& arg0.getY() >= 650 && arg0.getY() <= (650 + Constants.buttonplayer.getHeight())
 							&& manager.getGameScene() instanceof MenuScene) {
 						manager.switchToDLV();
+						
+					}
+					else if(arg0.getX() >= 1172 && arg0.getX() <= (1172 + Constants.buttonplayer.getWidth()) 
+							&& arg0.getY() >= 650 && arg0.getY() <= (650 + Constants.buttonplayer.getHeight())
+							&& manager.getGameScene() instanceof MenuScene) {
+						Platform.exit();
 						
 					}
 				}

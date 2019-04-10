@@ -49,4 +49,5 @@ public class SceneManager {
 	public GameScene getGameScene() {
 		return this.scene;
 	}
+
 }
