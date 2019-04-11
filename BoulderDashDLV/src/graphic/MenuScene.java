@@ -98,7 +98,7 @@ public class MenuScene implements GameScene {
 					else if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
 							&& arg0.getY() >= 650 && arg0.getY() <= (650 + Constants.buttonplayer.getHeight())
 							&& manager.getGameScene() instanceof MenuScene) {
-						manager.switchToDLV();
+						manager.switchToLevelsDLV();
 						
 					}
 					else if(arg0.getX() >= 1172 && arg0.getX() <= (1172 + Constants.buttonplayer.getWidth()) 

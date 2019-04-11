@@ -29,7 +29,7 @@ public class PlayScene implements GameScene {
 			manager.switchToVittoria(level);
 		}
 		if (world.getDie()) {
-			manager.switchToDie();
+			manager.switchToDie(level);
 		}
 	/*	player.update();
 		obManager.update();

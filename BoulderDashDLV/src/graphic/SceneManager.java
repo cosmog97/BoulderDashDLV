@@ -36,11 +36,15 @@ public class SceneManager {
 		this.scene = new LevelScene(this);
 	}
 	
+	public void switchToLevelsDLV() {
+		this.scene = new LevelSceneDLV(this);
+	}
+	
 	public void switchToVittoria(int level) {
 		this.scene = new VittoriaScene(this,level);
 	}
-	public void switchToDie() {
-		this.scene = new DieScene(this);
+	public void switchToDie(int level) {
+		this.scene = new DieScene(this, level);
 	}
 	public void switchToMenu() {
 		this.scene = new MenuScene(this);

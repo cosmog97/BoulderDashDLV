@@ -12,9 +12,12 @@ public class DieScene implements GameScene {
 	protected SceneManager manager;
 	protected boolean menuOn = false;
 	protected boolean randomOn = false;
-	public DieScene(SceneManager manager) {
+	protected boolean riprovaOn = false;
+	protected int level;
+	
+	public DieScene(SceneManager manager, int level) {
 		this.manager = manager;
-;
+		this.level = level;
 	}
 	
 	public void update() {
@@ -30,7 +33,7 @@ public class DieScene implements GameScene {
 		else {
 			Constants.context.drawImage(Constants.buttonmenu, 558, 600);
 		}
-		if (randomOn) {
+		if (riprovaOn) {
 			Constants.context.drawImage(Constants.buttonriprova_on, 1158, 600);
 		}
 		else {
@@ -56,10 +59,10 @@ public class DieScene implements GameScene {
 						&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.buttonmenu.getHeight())
 						&& manager.getGameScene() instanceof DieScene) {
 					//manager.switchToPlay();
-					randomOn = true;
+					riprovaOn = true;
 				} 
 				else {
-					randomOn = false;
+					riprovaOn = false;
 				}
 			}
 		});
@@ -72,8 +75,13 @@ public class DieScene implements GameScene {
 							&& manager.getGameScene() instanceof DieScene) {
 						manager.switchToMenu();
 					}
+					if(arg0.getX() >= 1158 && arg0.getX() <= (1158 + Constants.buttonmenu.getWidth()) 
+							&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.buttonmenu.getHeight())
+							&& manager.getGameScene() instanceof DieScene) {
+						//manager.switchToPlay();
+						manager.switchToPlay(level);
+					} 
 				}
-				
 			}
 		});
 	}
