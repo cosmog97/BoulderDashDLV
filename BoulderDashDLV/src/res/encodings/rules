@@ -1,0 +1,7 @@
+stone(X,Y).
+wall(X,Y).
+player(X,Y).
+gem(X,Y).
+
+
+up() | down() | right() | left() :- player(X,Y).
