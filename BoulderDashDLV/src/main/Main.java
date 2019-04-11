@@ -24,9 +24,10 @@ public class Main extends Application {
 	   primaryStage.setTitle("BoulderDashDLV");
 	   primaryStage.getIcons().add(Constants.icon);
 	   primaryStage.setResizable(false);
-	   primaryStage.show();
 	   primaryStage.setScene(scene);
 	   primaryStage.centerOnScreen();
+	   primaryStage.show();
+	   
 	   
 	   final GameManager game = new GameManager();
 		

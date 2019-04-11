@@ -36,15 +36,15 @@ public class World {
 			switch (level) {
 			case 1:
 				reader = new BufferedReader(
-						new FileReader(Paths.get("").toAbsolutePath() + "\\src\\res\\level\\level01.txt"));
+						new FileReader(Paths.get("").toAbsolutePath() + "/src/res/level/level01.txt"));
 				break;
 			case 2:
 				reader = new BufferedReader(
-						new FileReader(Paths.get("").toAbsolutePath() + "\\src\\res\\level\\level02.txt"));
+						new FileReader(Paths.get("").toAbsolutePath() + "/src/res/level/level02.txt"));
 				break;
 			case 3:
 				reader = new BufferedReader(
-						new FileReader(Paths.get("").toAbsolutePath() + "\\src\\res\\level\\level03.txt"));
+						new FileReader(Paths.get("").toAbsolutePath() + "/src/res/level/level03.txt"));
 				break;
 			}
 
