@@ -14,7 +14,10 @@ import java.util.Scanner;
 import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class World {
 
@@ -32,6 +35,10 @@ public class World {
 	public World(int level) {
 		this.world = new Object[this.getRow()][this.getColumn()];
 		this.level = level;
+		Constants.context.setFill(Color.WHITE);
+		Constants.context.setStroke(Color.MIDNIGHTBLUE);
+		Constants.context.setTextAlign(TextAlignment.CENTER);
+		Constants.context.setFont(Font.font ("Distant Galaxy", 50));  //"Verdana"
 		if (level != 4) {
 			createWorld();
 		}
@@ -140,7 +147,17 @@ public class World {
 		this.player = new Player(1, 0);
 		this.world[1][0] = new Empty(1, 0);
 		this.world[2][2] = new Diamond(2, 2);
-		maxGemme++;
+		this.world[3][2] = new Diamond(3, 2);
+		this.world[4][2] = new Diamond(4, 2);
+		this.world[5][2] = new Diamond(5, 2);
+		this.world[6][2] = new Diamond(6, 2);
+		this.world[7][2] = new Diamond(7, 2);
+		this.world[8][2] = new Diamond(8, 2);
+		this.world[9][2] = new Diamond(9, 2);
+		this.world[10][2] = new Diamond(10, 2);
+		this.world[11][2] = new Diamond(11, 2);
+		this.world[12][2] = new Diamond(12, 2);
+		maxGemme+=11;
 	}
 	
 	public int getRow() {
@@ -156,10 +173,12 @@ public class World {
 	}
 
 	public void draw() {
-
+		
 		Constants.context.drawImage(Constants.mappa, 0, 0);
-		Constants.context.strokeText("Gemme raccolte " + contGemme, 10, 50);
-		Constants.context.strokeText("Gemme da raccogliere " + (maxGemme - contGemme), 10, 80);
+		Constants.context.drawImage(Constants.gemmeraccolte, 19, 50);
+		Constants.context.fillText(Integer.toString(contGemme), 144, 164);
+		Constants.context.strokeText(Integer.toString(contGemme), 144, 164);
+		//Constants.context.strokeText("Gemme da raccogliere " + (maxGemme - contGemme), 10, 80);
 		for (int i = 0; i < getRow(); i++) {
 			for (int j = 0; j < getColumn(); j++) {
 				world[i][j].draw();

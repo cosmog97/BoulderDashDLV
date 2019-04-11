@@ -15,6 +15,7 @@ public class Constants {
 	public static Image die = new Image("res/die.png");
 	public static Image bgmenu = new Image ("res/levelsmap.png");
 	public static Image bglevels = bgmenu;
+	public static Image gemmeraccolte = new Image ("res/gemmeraccolte.png");
 	public static Image buttonplayer = new Image ("res/buttonplayer.png");
 	public static Image buttonplayer_on = new Image("res/buttonplayer_on.png");
 	public static Image buttondlv = new Image ("res/buttondlv.png");
