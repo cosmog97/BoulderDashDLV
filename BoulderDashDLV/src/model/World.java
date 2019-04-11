@@ -24,13 +24,23 @@ public class World {
 	private int maxGemme;
 	private boolean win = false;
 	private boolean die = false;
-
+	private int level;
 	public World() {
 		this.world = new Object[this.getRow()][this.getColumn()];
 	}
 
 	public World(int level) {
 		this.world = new Object[this.getRow()][this.getColumn()];
+		this.level = level;
+		if (level != 4) {
+			createWorld();
+		}
+		else {
+			createRandomWorld();
+		}
+	}
+
+	public void createWorld() {
 		BufferedReader reader = null;
 		try {
 			switch (level) {
@@ -94,7 +104,45 @@ public class World {
 		this.player = new Player(1, 0);
 		this.world[1][0] = new Empty(1, 0);
 	}
+	
+	public void createRandomWorld () {
+		char var = '1';
+		for (int cont = 0; cont < getRow(); cont++) {
+		
+			for (int i = 0; i < getColumn(); i++) {
 
+				switch (var) {
+				case '0':
+					this.world[cont][i] = new Empty(cont, i);
+					break;
+				case '1':
+					this.world[cont][i] = new Ground(cont, i);
+					break;
+				case '2':
+					this.world[cont][i] = new Stone(cont, i);
+					break;
+				case '3':
+					this.world[cont][i] = new Wall(cont, i);
+					break;
+				case '4':
+					this.world[cont][i] = new Diamond(cont, i);
+					break;
+				case '5':
+					this.world[cont][i] = null; // new Enemy(cont, i, this);
+					break;
+				case '6':
+					this.world[cont][i] = null; // new Door(cont, i, this);
+					break;
+
+				}
+			}
+		}
+		this.player = new Player(1, 0);
+		this.world[1][0] = new Empty(1, 0);
+		this.world[2][2] = new Diamond(2, 2);
+		maxGemme++;
+	}
+	
 	public int getRow() {
 		return Constants.altezza;
 	}

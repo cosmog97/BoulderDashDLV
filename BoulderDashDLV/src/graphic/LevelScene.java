@@ -145,7 +145,7 @@ public class LevelScene implements GameScene {
 					if(arg0.getX() >= 1362 && arg0.getX() <= (1362 + Constants.liv_uno.getWidth()) 
 							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelScene) {
-						//manager.switchToRandom();
+						manager.switchToPlay(4);
 					}
 					
 					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 

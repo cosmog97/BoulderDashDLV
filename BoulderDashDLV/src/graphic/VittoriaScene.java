@@ -39,7 +39,7 @@ public class VittoriaScene implements GameScene {
 		else {
 			Constants.context.drawImage(Constants.livrandom, 1158, 600);
 		}
-		if (level != 3) {
+		if (level < 3) {
 			if (proxOn) {
 				Constants.context.drawImage(Constants.livsucc_on, 858, 700);
 			}
@@ -73,7 +73,7 @@ public class VittoriaScene implements GameScene {
 					randomOn = false;
 				}
 				
-				if (level != 3) {
+				if (level < 3) {
 					if(arg0.getX() >= 858 && arg0.getX() <= (858 + Constants.livrandom.getWidth()) 
 							&& arg0.getY() >= 700 && arg0.getY() <= (700 + Constants.livrandom.getHeight())
 							&& manager.getGameScene() instanceof VittoriaScene) {
@@ -100,11 +100,11 @@ public class VittoriaScene implements GameScene {
 					if(arg0.getX() >= 1158 && arg0.getX() <= (1158 + Constants.livrandom.getWidth()) 
 							&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.livrandom.getHeight())
 							&& manager.getGameScene() instanceof VittoriaScene) {
-						//manager.switchToPlayRandom();
+						manager.switchToPlay(4);
 					} 
 					
 					
-					if (level != 3) {
+					if (level < 3) {
 						if(arg0.getX() >= 858 && arg0.getX() <= (858 + Constants.livrandom.getWidth()) 
 								&& arg0.getY() >= 700 && arg0.getY() <= (700 + Constants.livrandom.getHeight())
 								&& manager.getGameScene() instanceof VittoriaScene) {
