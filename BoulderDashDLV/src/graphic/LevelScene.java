@@ -57,10 +57,10 @@ public class LevelScene implements GameScene {
 			Constants.context.drawImage(Constants.liv_tre, 930, 380);
 		}
 		if (random) {
-			Constants.context.drawImage(null, 1362, 380);
+			Constants.context.drawImage(Constants.liv_random_on, 1362, 380);
 		}
 		else {
-			Constants.context.drawImage(null, 1362, 380);
+			Constants.context.drawImage(Constants.liv_random, 1362, 380);
 		}
 	}
 
@@ -99,6 +99,15 @@ public class LevelScene implements GameScene {
 						tre = false;
 					}
 				
+					if(arg0.getX() >= 1362 && arg0.getX() <= (1362 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
+						random = true;
+					} 
+					else {
+						random = false;
+					}
+					
 					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
 							&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
 							&& manager.getGameScene() instanceof LevelScene) {
@@ -131,8 +140,13 @@ public class LevelScene implements GameScene {
 							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelScene) {
 						manager.switchToPlay(3);
-					} 
+					}
 					
+					if(arg0.getX() >= 1362 && arg0.getX() <= (1362 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
+						//manager.switchToRandom();
+					}
 					
 					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
 							&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
