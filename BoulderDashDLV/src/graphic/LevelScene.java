@@ -39,28 +39,28 @@ public class LevelScene implements GameScene {
 		}
 		
 		if (uno) {
-			Constants.context.drawImage(null, 256, 540);
+			Constants.context.drawImage(Constants.liv_uno_on, 66, 380);
 		}
 		else {
-			Constants.context.drawImage(null, 256, 540);
+			Constants.context.drawImage(Constants.liv_uno, 66, 380);
 		}
 		if (due) {
-			Constants.context.drawImage(null, 256, 650);
+			Constants.context.drawImage(Constants.liv_due_on, 498, 380);
 		}
 		else {
-			Constants.context.drawImage(null, 256, 650);
+			Constants.context.drawImage(Constants.liv_due, 498, 380);
 		}
 		if (tre) {
-			Constants.context.drawImage(null, 256, 650);
+			Constants.context.drawImage(Constants.liv_tre_on, 930, 380);
 		}
 		else {
-			Constants.context.drawImage(null, 256, 650);
+			Constants.context.drawImage(Constants.liv_tre, 930, 380);
 		}
 		if (random) {
-			Constants.context.drawImage(null, 256, 650);
+			Constants.context.drawImage(null, 1362, 380);
 		}
 		else {
-			Constants.context.drawImage(null, 256, 650);
+			Constants.context.drawImage(null, 1362, 380);
 		}
 	}
 
@@ -69,62 +69,77 @@ public class LevelScene implements GameScene {
 			@Override 
 			public void handle(MouseEvent arg0) {
 
-				/*	if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
-							&& arg0.getY() >= 540 && arg0.getY() <= (540 + Constants.buttonplayer.getHeight())
-							&& manager.getGameScene() instanceof MenuScene) {
+					if(arg0.getX() >= 66 && arg0.getX() <= (66 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
 						//manager.switchToPlay();
-						playerOn = true;
+						uno = true;
 					} 
 					else {
-						playerOn = false;
+						uno = false;
 					}
 					
-					if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
-							&& arg0.getY() >= 650 && arg0.getY() <= (650 + Constants.buttonplayer.getHeight())
-							&& manager.getGameScene() instanceof MenuScene) {
+					if(arg0.getX() >= 498 && arg0.getX() <= (498 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
 						//manager.switchToPlay();
-						dlvOn = true;
+						due = true;
 					} 
 					else {
-						dlvOn = false;
+						due = false;
 					}
-				*/
-				if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
-						&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
-						&& manager.getGameScene() instanceof LevelScene) {
-					indietro = true;
-				} 
-				else {
-					indietro = false;
-				}
+					
+					if(arg0.getX() >= 930 && arg0.getX() <= (930 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
+						//manager.switchToPlay();
+						tre = true;
+					} 
+					else {
+						tre = false;
+					}
+				
+					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
+							&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
+						indietro = true;
+					} 
+					else {
+						indietro = false;
+					}
 			}
 		});
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override 
 			public void handle(MouseEvent arg0) {
-				if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
-						&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
-						&& manager.getGameScene() instanceof LevelScene) {
-					manager.switchToMenu();
-				}
-				else {
-					manager.switchToPlay(2);
-				}
-				
-			/*	if(arg0.isPrimaryButtonDown()) {
-					if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
-							&& arg0.getY() >= 540 && arg0.getY() <= (540 + Constants.buttonplayer.getHeight())
-							&& manager.getGameScene() instanceof MenuScene) {
+				if(arg0.isPrimaryButtonDown()) {
+					if(arg0.getX() >= 66 && arg0.getX() <= (66 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
+						manager.switchToPlay(1);
+					} 
+					
+					
+					if(arg0.getX() >= 498 && arg0.getX() <= (498 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
 						manager.switchToPlay(2);
-						
+					} 
+					
+					
+					if(arg0.getX() >= 930 && arg0.getX() <= (930 + Constants.liv_uno.getWidth()) 
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
+						manager.switchToPlay(3);
+					} 
+					
+					
+					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
+							&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
+							&& manager.getGameScene() instanceof LevelScene) {
+						manager.switchToMenu();
 					}
-					else if(arg0.getX() >= 256 && arg0.getX() <= (256 + Constants.buttonplayer.getWidth()) 
-							&& arg0.getY() >= 650 && arg0.getY() <= (650 + Constants.buttonplayer.getHeight())
-							&& manager.getGameScene() instanceof MenuScene) {
-						manager.switchToDLV();
-						
-					}
-				}*/
+				}
 			}
 		});
 	}
