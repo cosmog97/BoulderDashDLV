@@ -125,27 +125,27 @@ public class LevelSceneDLV implements GameScene {
 					if(arg0.getX() >= 66 && arg0.getX() <= (66 + Constants.liv_uno.getWidth()) 
 							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelSceneDLV) {
-						manager.switchToPlay(1);
+						manager.switchToPlayDLV(1);
 					} 
 					
 					
 					if(arg0.getX() >= 498 && arg0.getX() <= (498 + Constants.liv_uno.getWidth()) 
 							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelSceneDLV) {
-						manager.switchToPlay(2);
+						manager.switchToPlayDLV(2);
 					} 
 					
 					
 					if(arg0.getX() >= 930 && arg0.getX() <= (930 + Constants.liv_uno.getWidth()) 
 							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelSceneDLV) {
-						manager.switchToPlay(3);
+						manager.switchToPlayDLV(3);
 					} 
 					
 					if(arg0.getX() >= 1362 && arg0.getX() <= (1362 + Constants.liv_uno.getWidth()) 
 							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelSceneDLV) {
-						manager.switchToPlay(4);
+						manager.switchToPlayDLV(4);
 					}
 					
 					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
