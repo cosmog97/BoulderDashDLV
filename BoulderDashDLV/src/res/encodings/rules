@@ -1,7 +1,19 @@
-stone(X,Y).
-wall(X,Y).
-player(X,Y).
-gem(X,Y).
 
+up(Y-1,X) | down(Y+1,X) | left(Y,X-1) | right(Y,X+1) :- player(Y,X).
 
-up() | down() | right() | left() :- player(X,Y).
+%gestione movimenti bordi
+
+:- stone(X,Y), up(X,Y).
+:- stone(X,Y), down(X,Y).
+:- stone(X,Y), left(X,Y).
+:- stone(X,Y), right(X,Y).
+
+:- wall(X,Y), up(X,Y).
+:- wall(X,Y), down(X,Y).
+:- wall(X,Y), left(X,Y).
+:- wall(X,Y), right(X,Y).
+
+:- up(X,_) , X < 0.
+:- down(X,_) , X > 17.
+:- left(_,X) , X < 0.
+:- right(_,X) , X > 29.

@@ -23,13 +23,15 @@ import javafx.scene.text.TextAlignment;
 public class World {
 
 	private Object[][] world;
-	private Player player;
+	public Player player;
 	private int contGemme = 0;
 	private int maxGemme;
 	private boolean win = false;
 	private boolean die = false;
 	private int level;
 	public boolean setDoor = false;
+	
+	
 	public World() {
 		this.world = new Object[this.getRow()][this.getColumn()];
 	}
