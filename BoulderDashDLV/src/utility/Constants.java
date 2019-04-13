@@ -37,6 +37,7 @@ public class Constants {
 	public static Image player = new Image ("res/player.png");
 	public static Image stone = new Image ("res/stone.png");
 	public static Image diamond = new Image ("res/diamond.png");
+	public static Image door = new Image ("res/door.png");
 	public static Image liv_uno = new Image ("res/livellouno.png");
 	public static Image liv_uno_on = new Image ("res/livellouno_on.png");
 	public static Image liv_due = new Image ("res/livellodue.png");

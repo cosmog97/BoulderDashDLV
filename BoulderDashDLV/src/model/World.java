@@ -185,9 +185,8 @@ public class World {
 			}
 
 		}
+		//Constants.context.drawImage(Constants.door, 0, 0);
 		player.draw();
-
-		
 	}
 
 	public boolean getWin() {
