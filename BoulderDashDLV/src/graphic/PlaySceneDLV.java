@@ -3,14 +3,11 @@ package graphic;
 
 import interfaces.GameScene;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.nio.file.Paths;
 
 import dlv_model.*;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import model.Diamond;
 import model.Empty;
@@ -39,7 +36,7 @@ public class PlaySceneDLV implements GameScene {
 	private int level;
 	private boolean indietroOn = false;
 	
-	private static String encodingResource = "/home/paolo/git/BoulderDashDLV/BoulderDashDLV/src/res/encodings/rules";
+	private static String encodingResource = Paths.get("").toAbsolutePath().toString() + "/src/res/encodings/rules";
 	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
 	InputProgram facts = new ASPInputProgram();
 	InputProgram encoding = new ASPInputProgram();
@@ -158,7 +155,7 @@ public class PlaySceneDLV implements GameScene {
 
 					if(arg0.getX() >= 19 && arg0.getX() <= (19 + Constants.indietroplay_on.getWidth()) 
 							&& arg0.getY() >= 720 && arg0.getY() <= (720 + Constants.indietroplay_on.getHeight())
-							&& manager.getGameScene() instanceof PlayScene) {
+							&& manager.getGameScene() instanceof PlaySceneDLV) {
 						//manager.switchToPlay();
 						indietroOn = true;
 					} 
@@ -173,8 +170,8 @@ public class PlaySceneDLV implements GameScene {
 				if(arg0.isPrimaryButtonDown()) {
 					if(arg0.getX() >= 19 && arg0.getX() <= (19 + Constants.indietroplay_on.getWidth()) 
 							&& arg0.getY() >= 720 && arg0.getY() <= (720 + Constants.indietroplay_on.getHeight())
-							&& manager.getGameScene() instanceof PlayScene) {
-						manager.switchToLevels();
+							&& manager.getGameScene() instanceof PlaySceneDLV) {
+						manager.switchToLevelsDLV();
 					}
 				}
 			}
