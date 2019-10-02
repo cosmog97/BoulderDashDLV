@@ -29,7 +29,6 @@ public class PlaySceneDLV implements GameScene {
 	private World world;
 	private int level;
 	private Closer_dlv newCloser = new Closer_dlv(20,25);
-	private boolean first = true;
 	private static String encodingResource = "/home/paolo/git/BoulderDashDLV/BoulderDashDLV/src/res/encodings/rules";
 	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
 	InputProgram facts = new ASPInputProgram();
@@ -45,7 +44,6 @@ public class PlaySceneDLV implements GameScene {
 	public void update() {
 		System.out.println("STO AGGIORNANDO IL MOVIMENTO PLAYER");
 		if (this.world.isNewCloserGem()) {
-			first = true;
 			newCloser = calcola_closer();
 			this.world.setNewCloserGem(false);
 		}
@@ -66,21 +64,24 @@ public class PlaySceneDLV implements GameScene {
 				} else if (world.getElement(i, j) instanceof Stone) {
 					try {
 						facts.addObjectInput(new Stone_dlv(i, j));
-						if (first) System.out.println("stone(" + i + "," + j + ").");
+						//if (first) 
+							System.out.println("stone(" + i + "," + j + ").");
 					} catch (Exception e) {
 						e.printStackTrace();
 					} // CREAZIONE DEL FATTO PIETRA
 				} else if (world.getElement(i, j) instanceof Diamond) {
 					try {
 						facts.addObjectInput(new Diamond_dlv(i, j));
-						if (first) System.out.println("gem(" + i + "," + j + ").");
+						//if (first) 
+							System.out.println("gem(" + i + "," + j + ").");
 					} catch (Exception e) {
 						e.printStackTrace();
 					} // CREAZIONE DEL FATTO
 				} else if (world.getElement(i, j) instanceof Wall) {
 					try {
 						facts.addObjectInput(new Wall_dlv(i, j));
-						if (first) System.out.println("wall(" + i + "," + j + ").");
+						//if (first) 
+							System.out.println("wall(" + i + "," + j + ").");
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -88,7 +89,8 @@ public class PlaySceneDLV implements GameScene {
 				} else if (world.getElement(i, j) instanceof Ground || world.getElement(i, j) instanceof Empty) {
 					try {
 						facts.addObjectInput(new Ground_dlv(i, j));
-						if (first) System.out.println("ground(" + i + "," + j + ").");
+						//if (first) 
+							System.out.println("ground(" + i + "," + j + ").");
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -112,6 +114,7 @@ public class PlaySceneDLV implements GameScene {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		handler.addProgram(facts);
 		encoding.addFilesPath(encodingResource);
 		handler.addProgram(encoding);
@@ -148,10 +151,7 @@ public class PlaySceneDLV implements GameScene {
 		if (world.getDie()) {
 			manager.switchToDieDLV(level);
 		}
-		first = false;
 		handler.removeAll();
-		handler.addProgram(facts);
-		handler.addProgram(encoding);
 	}
 
 	private Closer_dlv calcola_closer() {
