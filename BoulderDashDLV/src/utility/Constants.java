@@ -10,12 +10,14 @@ public class Constants {
 	public static int altezza = 18;
 	public static GraphicsContext context;
 	public static Image icon = new Image ("res/icon.png");
-	public static Image mappa = new Image ("res/mappa2.png");
+	public static Image mappa = new Image ("res/mappa.png");
 	public static Image win = new Image("res/win.png");
 	public static Image die = new Image("res/die.png");
 	public static Image bgmenu = new Image ("res/levelsmap.png");
 	public static Image bglevels = bgmenu;
 	public static Image gemmeraccolte = new Image ("res/gemmeraccolte.png");
+	public static Image indietroplay = new Image ("res/indietroplay.png");
+	public static Image indietroplay_on = new Image ("res/indietroplay_on.png");
 	public static Image buttonplayer = new Image ("res/buttonplayer.png");
 	public static Image buttonplayer_on = new Image("res/buttonplayer_on.png");
 	public static Image buttondlv = new Image ("res/buttondlv.png");

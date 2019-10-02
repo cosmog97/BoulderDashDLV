@@ -229,7 +229,7 @@ public class World {
 		//da qui gravità dei massi
 		for (int i = 0; i < getRow(); i++) {
 			for (int j = 0; j < getColumn(); j++) {
-				if (world[i][j] instanceof Stone) {
+				if (world[i][j] instanceof Stone && i + 1 < getRow()) {
 					if (world[i + 1][j] instanceof Empty
 							&& !(player.getRowIndex() == i + 1 && player.getColumnIndex() == j)) {
 						world[i + 1][j] = world[i][j];
