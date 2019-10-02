@@ -1,7 +1,7 @@
 
 up(Y-1,X) | down(Y+1,X) | left(Y,X-1) | right(Y,X+1) :- player(Y,X).
 
-%gestione movimenti bordi
+%avoid collisions
 
 :- stone(X,Y), up(X,Y).
 :- stone(X,Y), down(X,Y).
@@ -13,7 +13,35 @@ up(Y-1,X) | down(Y+1,X) | left(Y,X-1) | right(Y,X+1) :- player(Y,X).
 :- wall(X,Y), left(X,Y).
 :- wall(X,Y), right(X,Y).
 
-:- up(X,_) , X < 0.
-:- down(X,_) , X > 17.
-:- left(_,X) , X < 0.
-:- right(_,X) , X > 29.
+:-    up(X,_), X < 0.
+:-  down(X,_), X > 17.
+:-  left(_,X), X < 0.
+:- right(_,X), X > 29.
+
+
+%avoid falling stones
+:-stone(X,Y), down(Z,Y), X = Z-2.
+
+
+dist(Z) :- right(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- right(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- right(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
+dist(Z) :- right(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
+
+dist(Z) :- left(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- left(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- left(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
+dist(Z) :- left(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
+
+dist(Z) :- up(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- up(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- up(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
+dist(Z) :- up(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
+
+dist(Z) :- down(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- down(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
+dist(Z) :- down(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
+dist(Z) :- down(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
+
+:- #count{X,Y:closer(X,Y)} <> 1.
+:~dist(Z). [1@Z]

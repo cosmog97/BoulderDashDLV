@@ -30,8 +30,17 @@ public class World {
 	private boolean die = false;
 	private int level;
 	public boolean setDoor = false;
+	private boolean newCloserGem = true;
 	
 	
+	public boolean isNewCloserGem() {
+		return newCloserGem;
+	}
+
+	public void setNewCloserGem(boolean newCloserGem) {
+		this.newCloserGem = newCloserGem;
+	}
+
 	public World() {
 		this.world = new Object[this.getRow()][this.getColumn()];
 	}
@@ -275,6 +284,7 @@ public class World {
 				} else if (world[player.getRowIndex() - 1][player.getColumnIndex()] instanceof Diamond) {
 					changeGround(player.getRowIndex() - 1, player.getColumnIndex());
 					contGemme++;
+					newCloserGem = true;
 					player.setRow(player.getRowIndex() - 1);
 				}
 			}
@@ -291,6 +301,7 @@ public class World {
 				} else if (world[player.getRowIndex() + 1][player.getColumnIndex()] instanceof Diamond) {
 					changeGround(player.getRowIndex() + 1, player.getColumnIndex());
 					contGemme++;
+					newCloserGem = true;
 					player.setRow(player.getRowIndex() + 1);
 				}
 			}
@@ -308,6 +319,7 @@ public class World {
 				} else if (world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Diamond) {
 					changeGround(player.getRowIndex(), player.getColumnIndex() - 1);
 					contGemme++;
+					newCloserGem = true;
 					player.setColumn(player.getColumnIndex() - 1);
 				} else if (world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Stone
 						&& world[player.getRowIndex()][player.getColumnIndex() - 2] instanceof Empty) {
@@ -335,6 +347,7 @@ public class World {
 				} else if (world[player.getRowIndex()][player.getColumnIndex() + 1] instanceof Diamond) {
 					changeGround(player.getRowIndex(), player.getColumnIndex() + 1);
 					contGemme++;
+					newCloserGem = true;
 					player.setColumn(player.getColumnIndex() + 1);
 
 				} else if (world[player.getRowIndex()][player.getColumnIndex() + 1] instanceof Stone
