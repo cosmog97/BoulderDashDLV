@@ -6,6 +6,7 @@ import interfaces.GameScene;
 import dlv_model.*;
 import javafx.scene.Scene;
 import model.Diamond;
+import model.Door;
 import model.Empty;
 import model.Ground;
 import model.Stone;
@@ -43,11 +44,13 @@ public class PlaySceneDLV implements GameScene {
 
 	public void update() {
 		System.out.println("STO AGGIORNANDO IL MOVIMENTO PLAYER");
+
 		if (this.world.isNewCloserGem()) {
 			newCloser = calcola_closer();
 			this.world.setNewCloserGem(false);
 		}
 		world.update();
+
 		facts.clearAll();
 
 		for (int i = 0; i < world.getRow(); i++) {
@@ -202,6 +205,14 @@ public class PlaySceneDLV implements GameScene {
 					try {
 						facts2.addObjectInput(new Ground_dlv(i, j));
 						System.out.println("ground(" + i + "," + j + ").");
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					} // CREAZIONE DEL FATTO
+				} else if (world.getElement(i, j) instanceof Door) {
+					try {
+						facts2.addObjectInput(new Door_dlv(i, j));
+						System.out.println("door(" + i + "," + j + ").");
 
 					} catch (Exception e) {
 						e.printStackTrace();
