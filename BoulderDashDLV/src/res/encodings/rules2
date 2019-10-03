@@ -1,3 +1,5 @@
+
+closer(X,Y) | notCloser(X,Y) :- door(X,Y).
 closer(X,Y) | notCloser(X,Y) :- gem(X,Y).
 
 dist(Z) :- player(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
@@ -7,6 +9,4 @@ dist(Z) :- player(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
 
 :- door(X,Y), closer(A,B), X<>A,Y<>B.
 :- #count{X,Y:closer(X,Y)} <> 1.
-:~dist(Z). [1@Z]
-
-
+:~ dist(Z). [1@Z]
