@@ -1,18 +1,28 @@
 
+%choose the direction
 up(Y-1,X) | down(Y+1,X) | left(Y,X-1) | right(Y,X+1) :- player(Y,X).
 
 %avoid collisions
-
+%%with stones
 :- stone(X,Y), up(X,Y).
 :- stone(X,Y), down(X,Y).
-:- stone(X,Y), left(X,Y).
-:- stone(X,Y), right(X,Y).
-
+%%%making it possible to move stone if there is an empty object on the other side of the stones
+%%%%to the left
+:- stone(X,Y), left(X,Y), ground(X,Y-1).
+:- stone(X,Y), left(X,Y), wall(X,Y-1).
+:- stone(X,Y), left(X,Y), stone(X,Y-1).
+:- stone(X,Y), left(X,Y), gem(X,Y-1).
+%%%%to the right
+:- stone(X,Y), right(X,Y), ground(X,Y+1).
+:- stone(X,Y), right(X,Y), wall(X,Y+1).
+:- stone(X,Y), right(X,Y), stone(X,Y+1).
+:- stone(X,Y), right(X,Y), gem(X,Y+1).
+%%with walls
 :- wall(X,Y), up(X,Y).
 :- wall(X,Y), down(X,Y).
 :- wall(X,Y), left(X,Y).
 :- wall(X,Y), right(X,Y).
-
+%%with borders
 :-    up(X,_), X < 0.
 :-  down(X,_), X > 17.
 :-  left(_,X), X < 0.
@@ -20,28 +30,38 @@ up(Y-1,X) | down(Y+1,X) | left(Y,X-1) | right(Y,X+1) :- player(Y,X).
 
 
 %avoid falling stones
-:-stone(X,Y), down(Z,Y), X = Z-2.
+:-stone(Z-2,Y), down(Z,Y).
 
+%avoid looping between two position
+:- before(X,Y), right(X,Y).
+:- before(X,Y), left (X,Y).
+:- before(X,Y), up(X,Y).
+:- before(X,Y), down(X,Y).
 
+%state the distance from the closer target
+%%after going right
 dist(Z) :- right(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- right(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- right(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
 dist(Z) :- right(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
 
+%%after going left
 dist(Z) :- left(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- left(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- left(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
 dist(Z) :- left(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
 
+%%after going up
 dist(Z) :- up(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- up(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- up(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
 dist(Z) :- up(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
 
+%%after going down
 dist(Z) :- down(A,B), closer(C,D), E = A-C, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- down(A,B), closer(C,D), E = C-A, F = B-D, Z = E+F, E>=0, F>=0.
 dist(Z) :- down(A,B), closer(C,D), E = A-C, F = D-B, Z = E+F, E>=0, F>=0.
 dist(Z) :- down(A,B), closer(C,D), E = C-A, F = D-B, Z = E+F, E>=0, F>=0.
 
-:- #count{X,Y:closer(X,Y)} <> 1.
+%state the optimum Answer Set: the one that create the less distance from the target
 :~dist(Z). [1@Z]

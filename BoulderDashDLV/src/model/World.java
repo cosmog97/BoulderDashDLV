@@ -31,15 +31,7 @@ public class World {
 	private int level;
 	public boolean setDoor = false;
 	private boolean newCloserGem = true;
-	
-	
-	public boolean isNewCloserGem() {
-		return newCloserGem;
-	}
 
-	public void setNewCloserGem(boolean newCloserGem) {
-		this.newCloserGem = newCloserGem;
-	}
 
 	public World() {
 		this.world = new Object[this.getRow()][this.getColumn()];
@@ -51,7 +43,7 @@ public class World {
 		Constants.context.setFill(Color.WHITE);
 		Constants.context.setStroke(Color.MIDNIGHTBLUE);
 		Constants.context.setTextAlign(TextAlignment.CENTER);
-		Constants.context.setFont(Font.font ("Distant Galaxy", 50));  //"Verdana"
+		Constants.context.setFont(Font.font ("Distant Galaxy", 50));
 		if (level != 4) {
 			createWorld();
 		}
@@ -125,12 +117,14 @@ public class World {
 		this.player = new Player(1, 0);
 		this.world[1][0] = new Empty(1, 0);
 	}
-	
+
 	public void createRandomWorld () {
-		char var = '1';
+		int var = '1';
 		for (int cont = 0; cont < getRow(); cont++) {
-		
 			for (int i = 0; i < getColumn(); i++) {
+
+				//Random rand = new Random(); 
+				//int var = rand.nextInt(5);
 
 				switch (var) {
 				case '0':
@@ -147,6 +141,7 @@ public class World {
 					break;
 				case '4':
 					this.world[cont][i] = new Diamond(cont, i);
+					maxGemme++;
 					break;
 				case '5':
 					this.world[cont][i] = null; // new Enemy(cont, i, this);
@@ -173,7 +168,7 @@ public class World {
 		this.world[12][2] = new Diamond(12, 2);
 		maxGemme+=11;
 	}
-	
+
 	public int getRow() {
 		return Constants.altezza;
 	}
@@ -187,7 +182,7 @@ public class World {
 	}
 
 	public void draw() {
-		
+
 		Constants.context.drawImage(Constants.mappa, 0, 0);
 		Constants.context.drawImage(Constants.gemmeraccolte, 19, 50);
 		Constants.context.fillText(Integer.toString(contGemme), 144, 164);
@@ -225,7 +220,7 @@ public class World {
 				win = true;
 			}
 		}
-		
+
 		//da qui gravità dei massi
 		for (int i = 0; i < getRow(); i++) {
 			for (int j = 0; j < getColumn(); j++) {
@@ -238,7 +233,7 @@ public class World {
 						if(player.getRowIndex() == i + 2 && player.getColumnIndex() == j) {
 							die = true;
 						}
-						
+
 					}
 
 					else if (world[i + 1][j] instanceof Stone && world[i][j - 1] instanceof Empty
@@ -325,7 +320,7 @@ public class World {
 						&& world[player.getRowIndex()][player.getColumnIndex() - 2] instanceof Empty) {
 					System.out.println("Entrato L");
 					world[player.getRowIndex()][player.getColumnIndex()
-							- 2] = world[player.getRowIndex()][player.getColumnIndex() - 1];
+					                            - 2] = world[player.getRowIndex()][player.getColumnIndex() - 1];
 					world[player.getRowIndex()][player.getColumnIndex() - 2].setColumn(player.getColumnIndex() - 2);
 					world[player.getRowIndex()][player.getColumnIndex() - 1] = new Empty(player.getRowIndex(),
 							player.getColumnIndex() - 1);
@@ -354,7 +349,7 @@ public class World {
 						&& world[player.getRowIndex()][player.getColumnIndex() + 2] instanceof Empty) {
 					System.out.println("Entrato R");
 					world[player.getRowIndex()][player.getColumnIndex()
-							+ 2] = world[player.getRowIndex()][player.getColumnIndex() + 1];
+					                            + 2] = world[player.getRowIndex()][player.getColumnIndex() + 1];
 					world[player.getRowIndex()][player.getColumnIndex() + 2].setColumn(player.getColumnIndex() + 2);
 					world[player.getRowIndex()][player.getColumnIndex() + 1] = new Empty(player.getRowIndex(),
 							player.getColumnIndex() + 1);
@@ -366,4 +361,13 @@ public class World {
 		}
 
 	}
+
+	public boolean isNewCloserGem() {
+		return newCloserGem;
+	}
+
+	public void setNewCloserGem(boolean newCloserGem) {
+		this.newCloserGem = newCloserGem;
+	}
+
 }
