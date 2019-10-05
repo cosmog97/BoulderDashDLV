@@ -1,24 +1,17 @@
 package model;
 
-import utility.*;
-
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.time.LocalTime;
 import java.util.Random;
-import java.util.Scanner;
 
-import com.sun.corba.se.impl.orbutil.closure.Constant;
-
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import utility.Constants;
+import utility.Direction;
 
 public class World {
 
@@ -32,7 +25,6 @@ public class World {
 	public boolean setDoor = false;
 	private boolean newCloserGem = true;
 
-
 	public World() {
 		this.world = new Object[this.getRow()][this.getColumn()];
 	}
@@ -43,12 +35,9 @@ public class World {
 		Constants.context.setFill(Color.WHITE);
 		Constants.context.setStroke(Color.MIDNIGHTBLUE);
 		Constants.context.setTextAlign(TextAlignment.CENTER);
-		Constants.context.setFont(Font.font ("Distant Galaxy", 50));
+		Constants.context.setFont(Font.font("Distant Galaxy", 50));
 		if (level != 4) {
 			createWorld();
-		}
-		else {
-			createRandomWorld();
 		}
 	}
 
@@ -118,57 +107,6 @@ public class World {
 		this.world[1][0] = new Empty(1, 0);
 	}
 
-	public void createRandomWorld () {
-		int var = '1';
-		for (int cont = 0; cont < getRow(); cont++) {
-			for (int i = 0; i < getColumn(); i++) {
-
-				//Random rand = new Random(); 
-				//int var = rand.nextInt(5);
-
-				switch (var) {
-				case '0':
-					this.world[cont][i] = new Empty(cont, i);
-					break;
-				case '1':
-					this.world[cont][i] = new Ground(cont, i);
-					break;
-				case '2':
-					this.world[cont][i] = new Stone(cont, i);
-					break;
-				case '3':
-					this.world[cont][i] = new Wall(cont, i);
-					break;
-				case '4':
-					this.world[cont][i] = new Diamond(cont, i);
-					maxGemme++;
-					break;
-				case '5':
-					this.world[cont][i] = null; // new Enemy(cont, i, this);
-					break;
-				case '6':
-					this.world[cont][i] = null; // new Door(cont, i, this);
-					break;
-
-				}
-			}
-		}
-		this.player = new Player(1, 0);
-		this.world[1][0] = new Empty(1, 0);
-		this.world[2][2] = new Diamond(2, 2);
-		this.world[3][2] = new Diamond(3, 2);
-		this.world[4][2] = new Diamond(4, 2);
-		this.world[5][2] = new Diamond(5, 2);
-		this.world[6][2] = new Diamond(6, 2);
-		this.world[7][2] = new Diamond(7, 2);
-		this.world[8][2] = new Diamond(8, 2);
-		this.world[9][2] = new Diamond(9, 2);
-		this.world[10][2] = new Diamond(10, 2);
-		this.world[11][2] = new Diamond(11, 2);
-		this.world[12][2] = new Diamond(12, 2);
-		maxGemme+=11;
-	}
-
 	public int getRow() {
 		return Constants.altezza;
 	}
@@ -187,7 +125,8 @@ public class World {
 		Constants.context.drawImage(Constants.gemmeraccolte, 19, 50);
 		Constants.context.fillText(Integer.toString(contGemme), 144, 164);
 		Constants.context.strokeText(Integer.toString(contGemme), 144, 164);
-		//Constants.context.strokeText("Gemme da raccogliere " + (maxGemme - contGemme), 10, 80);
+		// Constants.context.strokeText("Gemme da raccogliere " + (maxGemme -
+		// contGemme), 10, 80);
 		for (int i = 0; i < getRow(); i++) {
 			for (int j = 0; j < getColumn(); j++) {
 				world[i][j].draw();
@@ -200,6 +139,7 @@ public class World {
 	public boolean getWin() {
 		return win;
 	}
+
 	public boolean getDie() {
 		return die;
 	}
@@ -207,11 +147,11 @@ public class World {
 	public void update() {
 		if (contGemme == maxGemme) {
 			while (!setDoor) {
-				Random rand = new Random(); 
+				Random rand = new Random();
 				int _x = rand.nextInt(30);
 				int _y = rand.nextInt(18);
 				if (world[_y][_x] instanceof Empty || world[_y][_x] instanceof Ground) {
-					world[_y][_x] = new Door(_y,_x);
+					world[_y][_x] = new Door(_y, _x);
 					setDoor = true;
 				}
 
@@ -221,7 +161,7 @@ public class World {
 			}
 		}
 
-		//da qui gravità dei massi
+		// da qui gravità dei massi
 		for (int i = 0; i < getRow(); i++) {
 			for (int j = 0; j < getColumn(); j++) {
 				if (world[i][j] instanceof Stone && i + 1 < getRow()) {
@@ -230,7 +170,7 @@ public class World {
 						world[i + 1][j] = world[i][j];
 						world[i + 1][j].setRow(i + 1);
 						world[i][j] = new Empty(i, j);
-						if(player.getRowIndex() == i + 2 && player.getColumnIndex() == j) {
+						if (player.getRowIndex() == i + 2 && player.getColumnIndex() == j) {
 							die = true;
 						}
 
@@ -251,7 +191,7 @@ public class World {
 					}
 				}
 			}
-		} //////////////////////////////////////fino a qui
+		} ////////////////////////////////////// fino a qui
 	}
 
 	public void changeGround(int x, int y) {
@@ -269,11 +209,10 @@ public class World {
 		switch (dir) {
 		case UP:
 			if (player.canWalk(dir) && moveWallorStone(player.getRowIndex() - 1, player.getColumnIndex())) {
-				if(world[player.getRowIndex() - 1][player.getColumnIndex()] instanceof Empty 
+				if (world[player.getRowIndex() - 1][player.getColumnIndex()] instanceof Empty
 						|| world[player.getRowIndex() - 1][player.getColumnIndex()] instanceof Door) {
 					player.setRow(player.getRowIndex() - 1);
-				}
-				else if (world[player.getRowIndex() - 1][player.getColumnIndex()] instanceof Ground) {
+				} else if (world[player.getRowIndex() - 1][player.getColumnIndex()] instanceof Ground) {
 					changeGround(player.getRowIndex() - 1, player.getColumnIndex());
 					player.setRow(player.getRowIndex() - 1);
 				} else if (world[player.getRowIndex() - 1][player.getColumnIndex()] instanceof Diamond) {
@@ -286,11 +225,10 @@ public class World {
 			break;
 		case DOWN:
 			if (player.canWalk(dir) && moveWallorStone(player.getRowIndex() + 1, player.getColumnIndex())) {
-				if(world[player.getRowIndex() + 1][player.getColumnIndex()] instanceof Empty 
+				if (world[player.getRowIndex() + 1][player.getColumnIndex()] instanceof Empty
 						|| world[player.getRowIndex() + 1][player.getColumnIndex()] instanceof Door) {
 					player.setRow(player.getRowIndex() + 1);
-				}
-				else if (world[player.getRowIndex() + 1][player.getColumnIndex()] instanceof Ground) {
+				} else if (world[player.getRowIndex() + 1][player.getColumnIndex()] instanceof Ground) {
 					changeGround(player.getRowIndex() + 1, player.getColumnIndex());
 					player.setRow(player.getRowIndex() + 1);
 				} else if (world[player.getRowIndex() + 1][player.getColumnIndex()] instanceof Diamond) {
@@ -304,11 +242,10 @@ public class World {
 			break;
 		case LEFT:
 			if (player.canWalk(dir) && moveWallorStone(player.getRowIndex(), player.getColumnIndex() - 1)) {
-				if(world[player.getRowIndex()][player.getColumnIndex()-1] instanceof Empty
-						|| world[player.getRowIndex()][player.getColumnIndex()-1] instanceof Door) {
+				if (world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Empty
+						|| world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Door) {
 					player.setColumn(player.getColumnIndex() - 1);
-				}
-				else if (world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Ground) {
+				} else if (world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Ground) {
 					changeGround(player.getRowIndex(), player.getColumnIndex() - 1);
 					player.setColumn(player.getColumnIndex() - 1);
 				} else if (world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Diamond) {
@@ -320,7 +257,7 @@ public class World {
 						&& world[player.getRowIndex()][player.getColumnIndex() - 2] instanceof Empty) {
 					System.out.println("Entrato L");
 					world[player.getRowIndex()][player.getColumnIndex()
-					                            - 2] = world[player.getRowIndex()][player.getColumnIndex() - 1];
+							- 2] = world[player.getRowIndex()][player.getColumnIndex() - 1];
 					world[player.getRowIndex()][player.getColumnIndex() - 2].setColumn(player.getColumnIndex() - 2);
 					world[player.getRowIndex()][player.getColumnIndex() - 1] = new Empty(player.getRowIndex(),
 							player.getColumnIndex() - 1);
@@ -331,11 +268,10 @@ public class World {
 			break;
 		case RIGHT:
 			if (player.canWalk(dir) && moveWallorStone(player.getRowIndex(), player.getColumnIndex() + 1)) {
-				if(world[player.getRowIndex()][player.getColumnIndex()+1] instanceof Empty
-						|| world[player.getRowIndex()][player.getColumnIndex()+1] instanceof Door) {
+				if (world[player.getRowIndex()][player.getColumnIndex() + 1] instanceof Empty
+						|| world[player.getRowIndex()][player.getColumnIndex() + 1] instanceof Door) {
 					player.setColumn(player.getColumnIndex() + 1);
-				}
-				else if (world[player.getRowIndex()][player.getColumnIndex() + 1] instanceof Ground) {
+				} else if (world[player.getRowIndex()][player.getColumnIndex() + 1] instanceof Ground) {
 					changeGround(player.getRowIndex(), player.getColumnIndex() + 1);
 					player.setColumn(player.getColumnIndex() + 1);
 
@@ -349,7 +285,7 @@ public class World {
 						&& world[player.getRowIndex()][player.getColumnIndex() + 2] instanceof Empty) {
 					System.out.println("Entrato R");
 					world[player.getRowIndex()][player.getColumnIndex()
-					                            + 2] = world[player.getRowIndex()][player.getColumnIndex() + 1];
+							+ 2] = world[player.getRowIndex()][player.getColumnIndex() + 1];
 					world[player.getRowIndex()][player.getColumnIndex() + 2].setColumn(player.getColumnIndex() + 2);
 					world[player.getRowIndex()][player.getColumnIndex() + 1] = new Empty(player.getRowIndex(),
 							player.getColumnIndex() + 1);
