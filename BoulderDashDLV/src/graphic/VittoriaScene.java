@@ -43,9 +43,9 @@ public class VittoriaScene implements GameScene {
 			}
 		} else {
 			if (menuOn) {
-				Constants.context.drawImage(Constants.buttonmenu_on, 714, 600);
+				Constants.context.drawImage(Constants.buttonmenu_on, 858, 600);
 			} else {
-				Constants.context.drawImage(Constants.buttonmenu, 714, 600);
+				Constants.context.drawImage(Constants.buttonmenu, 858, 600);
 			}
 		}
 	}
@@ -73,7 +73,7 @@ public class VittoriaScene implements GameScene {
 						proxOn = false;
 					}
 				} else {
-					if (arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.buttonmenu.getWidth())
+					if (arg0.getX() >= 858 && arg0.getX() <= (858 + Constants.buttonmenu.getWidth())
 							&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.buttonmenu.getHeight())
 							&& manager.getGameScene() instanceof VittoriaScene) {
 						// manager.switchToPlay();
@@ -101,7 +101,7 @@ public class VittoriaScene implements GameScene {
 							manager.switchToPlayDLV(level + 1);
 						}
 					} else {
-						if (arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.buttonmenu.getWidth())
+						if (arg0.getX() >= 858 && arg0.getX() <= (858 + Constants.buttonmenu.getWidth())
 								&& arg0.getY() >= 600 && arg0.getY() <= (600 + Constants.buttonmenu.getHeight())
 								&& manager.getGameScene() instanceof VittoriaScene) {
 							manager.switchToMenu();
