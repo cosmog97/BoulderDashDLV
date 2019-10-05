@@ -1,5 +1,6 @@
 
 package graphic;
+
 import interfaces.GameScene;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -10,22 +11,19 @@ import utility.Constants;
 import utility.Direction;
 
 public class PlayScene implements GameScene {
-	
+
 	protected SceneManager manager;
 	private World world;
 	private int level;
-	private boolean indietroOn = false; 
-	/*private PlayerObject player;
-	private ObstacleManager obManager;*/
-	
+	private boolean indietroOn = false;
+
 	public PlayScene(SceneManager sceneManager, int level) {
 		this.manager = sceneManager;
 		this.level = level;
 		this.world = new World(this.level);
-	/*	this.player = new PlayerObject(12, 7, this.world);
-		this.obManager = new ObstacleManager(this.world);		*/
 	}
 
+	@Override
 	public void update() {
 		world.update();
 		if (world.getWin()) {
@@ -34,17 +32,9 @@ public class PlayScene implements GameScene {
 		if (world.getDie()) {
 			manager.switchToDie(level);
 		}
-	/*	player.update();
-		obManager.update();
-		if((player.jumpInWater() && obManager.voidBelow(player.row, player.column)) || obManager.collide(player.row, player.column)) {
-			player.removeLife();
-		}
-		if(player.checkWin() || player.isDead()) {
-			manager.switchToMenu();
-		}
-		//world.print();*/
 	}
 
+	@Override
 	public void draw() {
 		world.draw();
 		if (indietroOn) {
@@ -54,27 +44,29 @@ public class PlayScene implements GameScene {
 		}
 	}
 
+	@Override
 	public void handleEvent(Scene scene) {
 		scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
-			@Override 
+
+			@Override
 			public void handle(MouseEvent arg0) {
 
-					if(arg0.getX() >= 19 && arg0.getX() <= (19 + Constants.indietroplay_on.getWidth()) 
-							&& arg0.getY() >= 720 && arg0.getY() <= (720 + Constants.indietroplay_on.getHeight())
-							&& manager.getGameScene() instanceof PlayScene) {
-						//manager.switchToPlay();
-						indietroOn = true;
-					} 
-					else {
-						indietroOn = false;
-					}
+				if (arg0.getX() >= 19 && arg0.getX() <= (19 + Constants.indietroplay_on.getWidth())
+						&& arg0.getY() >= 720 && arg0.getY() <= (720 + Constants.indietroplay_on.getHeight())
+						&& manager.getGameScene() instanceof PlayScene) {
+					// manager.switchToPlay();
+					indietroOn = true;
+				} else {
+					indietroOn = false;
+				}
 			}
 		});
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-			@Override 
+
+			@Override
 			public void handle(MouseEvent arg0) {
-				if(arg0.isPrimaryButtonDown()) {
-					if(arg0.getX() >= 19 && arg0.getX() <= (19 + Constants.indietroplay_on.getWidth()) 
+				if (arg0.isPrimaryButtonDown()) {
+					if (arg0.getX() >= 19 && arg0.getX() <= (19 + Constants.indietroplay_on.getWidth())
 							&& arg0.getY() >= 720 && arg0.getY() <= (720 + Constants.indietroplay_on.getHeight())
 							&& manager.getGameScene() instanceof PlayScene) {
 						manager.switchToLevels();
@@ -83,28 +75,29 @@ public class PlayScene implements GameScene {
 			}
 		});
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			
+
+			@Override
 			public void handle(KeyEvent arg0) {
-		
-					switch(arg0.getCode()) {
-					case UP:
-						world.movePlayer(Direction.UP);
-						break;
-					case DOWN:
-						world.movePlayer(Direction.DOWN);
-						break;
-					case LEFT:
-						world.movePlayer(Direction.LEFT);
-						break;
-					case RIGHT:
-						world.movePlayer(Direction.RIGHT);
-						break;
-					default:
-						break;
-					}
-				
+
+				switch (arg0.getCode()) {
+				case UP:
+					world.movePlayer(Direction.UP);
+					break;
+				case DOWN:
+					world.movePlayer(Direction.DOWN);
+					break;
+				case LEFT:
+					world.movePlayer(Direction.LEFT);
+					break;
+				case RIGHT:
+					world.movePlayer(Direction.RIGHT);
+					break;
+				default:
+					break;
+				}
+
 			}
-			
+
 		});
 	}
 
