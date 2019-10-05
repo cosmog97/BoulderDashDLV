@@ -92,9 +92,6 @@ public class World {
 					this.world[cont][i] = new Diamond(cont, i);
 					maxGemme++;
 					break;
-				case '5':
-					this.world[cont][i] = null; // new Enemy(cont, i, this);
-					break;
 				case '6':
 					this.world[cont][i] = null; // new Door(cont, i, this);
 					break;
@@ -125,8 +122,6 @@ public class World {
 		Constants.context.drawImage(Constants.gemmeraccolte, 19, 50);
 		Constants.context.fillText(Integer.toString(contGemme), 144, 164);
 		Constants.context.strokeText(Integer.toString(contGemme), 144, 164);
-		// Constants.context.strokeText("Gemme da raccogliere " + (maxGemme -
-		// contGemme), 10, 80);
 		for (int i = 0; i < getRow(); i++) {
 			for (int j = 0; j < getColumn(); j++) {
 				world[i][j].draw();
@@ -255,7 +250,6 @@ public class World {
 					player.setColumn(player.getColumnIndex() - 1);
 				} else if (world[player.getRowIndex()][player.getColumnIndex() - 1] instanceof Stone
 						&& world[player.getRowIndex()][player.getColumnIndex() - 2] instanceof Empty) {
-					System.out.println("Entrato L");
 					world[player.getRowIndex()][player.getColumnIndex()
 							- 2] = world[player.getRowIndex()][player.getColumnIndex() - 1];
 					world[player.getRowIndex()][player.getColumnIndex() - 2].setColumn(player.getColumnIndex() - 2);
@@ -283,7 +277,6 @@ public class World {
 
 				} else if (world[player.getRowIndex()][player.getColumnIndex() + 1] instanceof Stone
 						&& world[player.getRowIndex()][player.getColumnIndex() + 2] instanceof Empty) {
-					System.out.println("Entrato R");
 					world[player.getRowIndex()][player.getColumnIndex()
 							+ 2] = world[player.getRowIndex()][player.getColumnIndex() + 1];
 					world[player.getRowIndex()][player.getColumnIndex() + 2].setColumn(player.getColumnIndex() + 2);
