@@ -30,7 +30,7 @@ public class PlaySceneDLV implements GameScene {
 	private World world;
 	private int level;
 	private Closer_dlv newCloser = new Closer_dlv(20,25);
-	private static String encodingResource = "/home/paolo/git/BoulderDashDLV/BoulderDashDLV/src/res/encodings/rules";
+	private static String encodingResource = "src/res/encodings/rules";
 	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
 	InputProgram facts = new ASPInputProgram();
 	InputProgram encoding = new ASPInputProgram();
@@ -169,7 +169,7 @@ public class PlaySceneDLV implements GameScene {
 
 	private Closer_dlv calcola_closer() {
 
-		String encodingResource2 = "/home/paolo/git/BoulderDashDLV/BoulderDashDLV/src/res/encodings/rules2";
+		String encodingResource2 = "src/res/encodings/rules2";
 		Handler handler2 = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
 		InputProgram facts2 = new ASPInputProgram();
 		InputProgram encoding2 = new ASPInputProgram();

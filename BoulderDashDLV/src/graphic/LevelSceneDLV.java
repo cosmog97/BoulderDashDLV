@@ -56,12 +56,7 @@ public class LevelSceneDLV implements GameScene {
 		else {
 			Constants.context.drawImage(Constants.liv_tre, 930, 380);
 		}
-		if (random) {
-			Constants.context.drawImage(Constants.liv_random_on, 1362, 380);
-		}
-		else {
-			Constants.context.drawImage(Constants.liv_random, 1362, 380);
-		}
+
 	}
 
 	public void handleEvent(Scene scene) {
@@ -98,15 +93,7 @@ public class LevelSceneDLV implements GameScene {
 					else {
 						tre = false;
 					}
-				
-					if(arg0.getX() >= 1362 && arg0.getX() <= (1362 + Constants.liv_uno.getWidth()) 
-							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
-							&& manager.getGameScene() instanceof LevelSceneDLV) {
-						random = true;
-					} 
-					else {
-						random = false;
-					}
+
 					
 					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
 							&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
@@ -142,11 +129,6 @@ public class LevelSceneDLV implements GameScene {
 						manager.switchToPlayDLV(3);
 					} 
 					
-					if(arg0.getX() >= 1362 && arg0.getX() <= (1362 + Constants.liv_uno.getWidth()) 
-							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
-							&& manager.getGameScene() instanceof LevelSceneDLV) {
-						manager.switchToPlayDLV(4);
-					}
 					
 					if(arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.indietro.getWidth()) 
 							&& arg0.getY() >= 750 && arg0.getY() <= (750 + Constants.indietro.getHeight())
