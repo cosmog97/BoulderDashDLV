@@ -31,6 +31,7 @@ public class MenuScene implements GameScene {
 	@Override
 	public void draw() {
 		Constants.context.drawImage(Constants.bgmenu, 0, 0);
+		Constants.context.drawImage(Constants.credits, 1300, 780);
 		if (playerOn) {
 			Constants.context.drawImage(Constants.buttonplayer_on, 256, 540);
 		} else {

@@ -48,4 +48,5 @@ public class Constants {
 	public static Image liv_tre_on = new Image("res/livellotre_on.png");
 	public static Image liv_random = new Image("res/random.png");
 	public static Image liv_random_on = new Image("res/random_on.png");
+	public static Image credits = new Image("res/credits.png");
 }
