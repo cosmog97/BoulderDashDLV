@@ -40,19 +40,19 @@ public class LevelScene implements GameScene {
 		}
 
 		if (uno) {
-			Constants.context.drawImage(Constants.liv_uno_on, 66, 380);
+			Constants.context.drawImage(Constants.liv_uno_on, 214, 380);
 		} else {
-			Constants.context.drawImage(Constants.liv_uno, 66, 380);
+			Constants.context.drawImage(Constants.liv_uno, 214, 380);
 		}
 		if (due) {
-			Constants.context.drawImage(Constants.liv_due_on, 498, 380);
+			Constants.context.drawImage(Constants.liv_due_on, 714, 380);
 		} else {
-			Constants.context.drawImage(Constants.liv_due, 498, 380);
+			Constants.context.drawImage(Constants.liv_due, 714, 380);
 		}
 		if (tre) {
-			Constants.context.drawImage(Constants.liv_tre_on, 930, 380);
+			Constants.context.drawImage(Constants.liv_tre_on, 1214, 380);
 		} else {
-			Constants.context.drawImage(Constants.liv_tre, 930, 380);
+			Constants.context.drawImage(Constants.liv_tre, 1214, 380);
 		}
 	}
 
@@ -62,7 +62,7 @@ public class LevelScene implements GameScene {
 			@Override
 			public void handle(MouseEvent arg0) {
 
-				if (arg0.getX() >= 66 && arg0.getX() <= (66 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
+				if (arg0.getX() >= 214 && arg0.getX() <= (214 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
 						&& arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 						&& manager.getGameScene() instanceof LevelScene) {
 					// manager.switchToPlay();
@@ -71,7 +71,7 @@ public class LevelScene implements GameScene {
 					uno = false;
 				}
 
-				if (arg0.getX() >= 498 && arg0.getX() <= (498 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
+				if (arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
 						&& arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 						&& manager.getGameScene() instanceof LevelScene) {
 					// manager.switchToPlay();
@@ -80,7 +80,7 @@ public class LevelScene implements GameScene {
 					due = false;
 				}
 
-				if (arg0.getX() >= 930 && arg0.getX() <= (930 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
+				if (arg0.getX() >= 1214 && arg0.getX() <= (1214 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
 						&& arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 						&& manager.getGameScene() instanceof LevelScene) {
 					// manager.switchToPlay();
@@ -102,20 +102,20 @@ public class LevelScene implements GameScene {
 			@Override
 			public void handle(MouseEvent arg0) {
 				if (arg0.isPrimaryButtonDown()) {
-					if (arg0.getX() >= 66 && arg0.getX() <= (66 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
+					if (arg0.getX() >= 214 && arg0.getX() <= (214 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
 							&& arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelScene) {
 						manager.switchToPlay(1);
 					}
 
-					if (arg0.getX() >= 498 && arg0.getX() <= (498 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
+					if (arg0.getX() >= 714 && arg0.getX() <= (714 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
 							&& arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelScene) {
 						manager.switchToPlay(2);
 					}
 
-					if (arg0.getX() >= 930 && arg0.getX() <= (930 + Constants.liv_uno.getWidth()) && arg0.getY() >= 380
-							&& arg0.getY() <= (380 + Constants.liv_uno.getHeight())
+					if (arg0.getX() >= 1214 && arg0.getX() <= (1214 + Constants.liv_uno.getWidth())
+							&& arg0.getY() >= 380 && arg0.getY() <= (380 + Constants.liv_uno.getHeight())
 							&& manager.getGameScene() instanceof LevelScene) {
 						manager.switchToPlay(3);
 					}
