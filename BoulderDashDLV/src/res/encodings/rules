@@ -12,11 +12,13 @@ up(Y-1,X) | down(Y+1,X) | left(Y,X-1) | right(Y,X+1) :- player(Y,X).
 :- stone(X,Y), left(X,Y), wall(X,Y-1).
 :- stone(X,Y), left(X,Y), stone(X,Y-1).
 :- stone(X,Y), left(X,Y), gem(X,Y-1).
+:- stone(X,Y), left(X,Y), door(X,Y-1).
 %%%%to the right
 :- stone(X,Y), right(X,Y), ground(X,Y+1).
 :- stone(X,Y), right(X,Y), wall(X,Y+1).
 :- stone(X,Y), right(X,Y), stone(X,Y+1).
 :- stone(X,Y), right(X,Y), gem(X,Y+1).
+:- stone(X,Y), right(X,Y), door(X,Y+1).
 %%with walls
 :- wall(X,Y), up(X,Y).
 :- wall(X,Y), down(X,Y).

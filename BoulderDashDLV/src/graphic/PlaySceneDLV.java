@@ -1,9 +1,29 @@
 
 package graphic;
 
+import dlv_model.Before_dlv;
+import dlv_model.Closer_dlv;
+import dlv_model.Diamond_dlv;
+import dlv_model.Door_dlv;
+import dlv_model.Down_dlv;
+import dlv_model.Empty_dlv;
+import dlv_model.Ground_dlv;
+import dlv_model.Left_dlv;
+import dlv_model.Player_dlv;
+import dlv_model.Right_dlv;
+import dlv_model.Stone_dlv;
+import dlv_model.Up_dlv;
+import dlv_model.Wall_dlv;
 import interfaces.GameScene;
-
-import dlv_model.*;
+import it.unical.mat.embasp.base.Handler;
+import it.unical.mat.embasp.base.InputProgram;
+import it.unical.mat.embasp.base.Output;
+import it.unical.mat.embasp.languages.asp.ASPInputProgram;
+import it.unical.mat.embasp.languages.asp.ASPMapper;
+import it.unical.mat.embasp.languages.asp.AnswerSet;
+import it.unical.mat.embasp.languages.asp.AnswerSets;
+import it.unical.mat.embasp.platforms.desktop.DesktopHandler;
+import it.unical.mat.embasp.specializations.dlv2.desktop.DLV2DesktopService;
 import javafx.scene.Scene;
 import model.Diamond;
 import model.Door;
@@ -14,22 +34,12 @@ import model.Wall;
 import model.World;
 import utility.Direction;
 
-import it.unical.mat.embasp.base.Handler;
-import it.unical.mat.embasp.base.InputProgram;
-import it.unical.mat.embasp.base.Output;
-import it.unical.mat.embasp.languages.asp.ASPInputProgram;
-import it.unical.mat.embasp.languages.asp.ASPMapper;
-import it.unical.mat.embasp.languages.asp.AnswerSet;
-import it.unical.mat.embasp.languages.asp.AnswerSets;
-import it.unical.mat.embasp.platforms.desktop.DesktopHandler;
-import it.unical.mat.embasp.specializations.dlv2.desktop.DLV2DesktopService;
-
 public class PlaySceneDLV implements GameScene {
 
 	protected SceneManager manager;
 	private World world;
 	private int level;
-	private Closer_dlv newCloser = new Closer_dlv(20,25);
+	private Closer_dlv newCloser = new Closer_dlv(20, 25);
 	private static String encodingResource = "src/res/encodings/rules";
 	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
 	InputProgram facts = new ASPInputProgram();
@@ -46,6 +56,7 @@ public class PlaySceneDLV implements GameScene {
 
 	}
 
+	@Override
 	public void update() {
 		world.update();
 
@@ -106,6 +117,12 @@ public class PlaySceneDLV implements GameScene {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+				} else if (world.getElement(i, j) instanceof Door) {
+					try {
+						facts.addObjectInput(new Door_dlv(i, j));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 
 			}
@@ -114,7 +131,7 @@ public class PlaySceneDLV implements GameScene {
 			facts.addObjectInput(newCloser);
 			System.out.println("closer(" + newCloser.getRow() + "," + newCloser.getColumn() + ").");
 
-		} catch (Exception e) {		
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		try {
@@ -132,10 +149,10 @@ public class PlaySceneDLV implements GameScene {
 		Output o = handler.startSync();
 		AnswerSets answers = (AnswerSets) o;
 
-		before = new Before_dlv(ib,jb);
+		before = new Before_dlv(ib, jb);
 
-		for (AnswerSet a : answers.getAnswersets()) { 
-			System.out.println(a); 
+		for (AnswerSet a : answers.getAnswersets()) {
+			System.out.println(a);
 			try {
 				for (Object obj : a.getAtoms()) {
 					if ((obj instanceof Up_dlv)) {
@@ -152,7 +169,7 @@ public class PlaySceneDLV implements GameScene {
 						System.out.println("LEFT");
 					}
 				}
-			} catch (Exception e) { 
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -173,9 +190,8 @@ public class PlaySceneDLV implements GameScene {
 		Handler handler2 = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
 		InputProgram facts2 = new ASPInputProgram();
 		InputProgram encoding2 = new ASPInputProgram();
-		Closer_dlv new_closer_temp = new Closer_dlv(20,20);
+		Closer_dlv new_closer_temp = new Closer_dlv(20, 20);
 		facts2.clearAll();
-
 
 		for (int i = 0; i < world.getRow(); i++) {
 			for (int j = 0; j < world.getColumn(); j++) {
@@ -239,15 +255,15 @@ public class PlaySceneDLV implements GameScene {
 		Output o2 = handler2.startSync();
 		AnswerSets answers2 = (AnswerSets) o2;
 
-		for (AnswerSet a : answers2.getAnswersets()) { 
-			//System.out.println(a); 
+		for (AnswerSet a : answers2.getAnswersets()) {
+			// System.out.println(a);
 			try {
 				for (Object obj : a.getAtoms()) {
 					if ((obj instanceof Closer_dlv)) {
 						new_closer_temp = (Closer_dlv) obj;
 					}
 				}
-			} catch (Exception e) { 
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -259,10 +275,12 @@ public class PlaySceneDLV implements GameScene {
 		return new_closer_temp;
 	}
 
+	@Override
 	public void draw() {
 		world.draw();
 	}
 
+	@Override
 	public void handleEvent(Scene scene) {
 	}
 }
