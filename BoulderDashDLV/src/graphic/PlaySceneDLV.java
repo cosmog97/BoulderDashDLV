@@ -78,7 +78,7 @@ public class PlaySceneDLV implements GameScene {
 				if (world.player.getColumnIndex() == j && world.player.getRowIndex() == i) {
 					try {
 						facts.addObjectInput(new Player_dlv(i, j));
-						System.out.println("player(" + i + "," + j + ").");
+						// System.out.println("player(" + i + "," + j + ").");
 						ib = i;
 						jb = j;
 					} catch (Exception e) {
@@ -128,7 +128,8 @@ public class PlaySceneDLV implements GameScene {
 		}
 		try {
 			facts.addObjectInput(newCloser);
-			System.out.println("closer(" + newCloser.getRow() + "," + newCloser.getColumn() + ").");
+			// System.out.println("closer(" + newCloser.getRow() + "," +
+			// newCloser.getColumn() + ").");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -151,21 +152,21 @@ public class PlaySceneDLV implements GameScene {
 		before = new Before_dlv(ib, jb);
 
 		for (AnswerSet a : answers.getAnswersets()) {
-			System.out.println(a);
+			// System.out.println(a);
 			try {
 				for (Object obj : a.getAtoms()) {
 					if ((obj instanceof Up_dlv)) {
 						world.movePlayer(Direction.UP);
-						System.out.println("UP");
+						// System.out.println("UP");
 					} else if ((obj instanceof Down_dlv)) {
 						world.movePlayer(Direction.DOWN);
-						System.out.println("DOWN");
+						// System.out.println("DOWN");
 					} else if ((obj instanceof Right_dlv)) {
 						world.movePlayer(Direction.RIGHT);
-						System.out.println("RIGHT");
+						// System.out.println("RIGHT");
 					} else if ((obj instanceof Left_dlv)) {
 						world.movePlayer(Direction.LEFT);
-						System.out.println("LEFT");
+						// System.out.println("LEFT");
 					}
 				}
 			} catch (Exception e) {
@@ -197,7 +198,7 @@ public class PlaySceneDLV implements GameScene {
 				if (world.player.getColumnIndex() == j && world.player.getRowIndex() == i) {
 					try {
 						facts2.addObjectInput(new Player_dlv(i, j));
-						System.out.println("player(" + i + "," + j + ").");
+						// System.out.println("player(" + i + "," + j + ").");
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -205,21 +206,21 @@ public class PlaySceneDLV implements GameScene {
 				} else if (world.getElement(i, j) instanceof Stone) {
 					try {
 						facts2.addObjectInput(new Stone_dlv(i, j));
-						System.out.println("stone(" + i + "," + j + ").");
+						// System.out.println("stone(" + i + "," + j + ").");
 					} catch (Exception e) {
 						e.printStackTrace();
 					} // CREAZIONE DEL FATTO PIETRA
 				} else if (world.getElement(i, j) instanceof Diamond) {
 					try {
 						facts2.addObjectInput(new Diamond_dlv(i, j));
-						System.out.println("gem(" + i + "," + j + ").");
+						// System.out.println("gem(" + i + "," + j + ").");
 					} catch (Exception e) {
 						e.printStackTrace();
 					} // CREAZIONE DEL FATTO
 				} else if (world.getElement(i, j) instanceof Wall) {
 					try {
 						facts2.addObjectInput(new Wall_dlv(i, j));
-						System.out.println("wall(" + i + "," + j + ").");
+						// System.out.println("wall(" + i + "," + j + ").");
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -227,7 +228,7 @@ public class PlaySceneDLV implements GameScene {
 				} else if (world.getElement(i, j) instanceof Ground || world.getElement(i, j) instanceof Empty) {
 					try {
 						facts2.addObjectInput(new Ground_dlv(i, j));
-						System.out.println("ground(" + i + "," + j + ").");
+						// System.out.println("ground(" + i + "," + j + ").");
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -235,7 +236,7 @@ public class PlaySceneDLV implements GameScene {
 				} else if (world.getElement(i, j) instanceof Door) {
 					try {
 						facts2.addObjectInput(new Door_dlv(i, j));
-						System.out.println("door(" + i + "," + j + ").");
+						// System.out.println("door(" + i + "," + j + ").");
 
 					} catch (Exception e) {
 						e.printStackTrace();
