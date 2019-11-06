@@ -40,7 +40,7 @@ public class PlaySceneDLV implements GameScene {
 	private int level;
 	private Closer_dlv newCloser = new Closer_dlv(20, 25);
 	private static String encodingResource = "src/res/encodings/rules";
-	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
+	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2.win.x64"));
 	InputProgram facts = new ASPInputProgram();
 	InputProgram encoding = new ASPInputProgram();
 	private int ib;
