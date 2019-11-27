@@ -40,7 +40,7 @@ public class PlaySceneDLV implements GameScene {
 	private int level;
 	private Closer_dlv newCloser = new Closer_dlv(20, 25);
 	private static String encodingResource = "src/res/encodings/rules";
-	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2.win.x64"));
+	private static Handler handler = new DesktopHandler(new DLV2DesktopService("lib/dlv2"));
 	InputProgram facts = new ASPInputProgram();
 	InputProgram encoding = new ASPInputProgram();
 	private int ib;
@@ -119,6 +119,7 @@ public class PlaySceneDLV implements GameScene {
 				} else if (world.getElement(i, j) instanceof Door) {
 					try {
 						facts.addObjectInput(new Door_dlv(i, j));
+						// System.out.println("Porta con i: " + i + " e j: " + j);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -237,7 +238,7 @@ public class PlaySceneDLV implements GameScene {
 					try {
 						facts2.addObjectInput(new Door_dlv(i, j));
 						// System.out.println("door(" + i + "," + j + ").");
-
+						System.out.println("Porta con i: " + i + " e j: " + j);
 					} catch (Exception e) {
 						e.printStackTrace();
 					} // CREAZIONE DEL FATTO

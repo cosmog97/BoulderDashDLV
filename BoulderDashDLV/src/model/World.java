@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Random;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -141,15 +140,10 @@ public class World {
 
 	public void update() {
 		if (contGemme == maxGemme) {
-			while (!setDoor) {
-				Random rand = new Random();
-				int _x = rand.nextInt(30);
-				int _y = rand.nextInt(18);
-				if (world[_y][_x] instanceof Empty || world[_y][_x] instanceof Ground) {
-					world[_y][_x] = new Door(_y, _x);
-					setDoor = true;
-				}
 
+			if ((world[6][27] instanceof Empty || world[6][27] instanceof Ground) && !setDoor) {
+				world[6][27] = new Door(6, 27);
+				setDoor = true;
 			}
 			if (world[player.getRowIndex()][player.getColumnIndex()] instanceof Door) {
 				win = true;
@@ -157,7 +151,13 @@ public class World {
 		}
 
 		// da qui gravità dei massi
-		for (int i = 0; i < getRow(); i++) {
+		for (
+
+				int i = 0; i <
+
+						getRow(); i++)
+
+		{
 			for (int j = 0; j < getColumn(); j++) {
 				if (world[i][j] instanceof Stone && i + 1 < getRow()) {
 					if (world[i + 1][j] instanceof Empty
